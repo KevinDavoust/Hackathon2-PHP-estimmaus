@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}State{% endblock %}
+
+{% block body %}
+    <h1>State</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ state.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ state.type }}</td>
+            </tr>
+            <tr>
+                <th>Percentage</th>
+                <td>{{ state.percentage }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_state_index') }}">back to list</a>
+
+    <a href="{{ path('app_state_edit', {'id': state.id}) }}">edit</a>
+
+    {{ include('state/_delete_form.html.twig') }}
+{% endblock %}
