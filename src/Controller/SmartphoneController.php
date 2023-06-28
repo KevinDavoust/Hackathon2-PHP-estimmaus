@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Smartphone;
+use App\Form\BrandType;
 use App\Form\SmartphoneType;
 use App\Repository\SmartphoneRepository;
+use App\Service\BrandService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,4 +77,32 @@ class SmartphoneController extends AbstractController
 
         return $this->redirectToRoute('app_smartphone_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/brand', name: 'app_smartphone_brand', methods: ['GET, POST'])]
+    public function brandEstimate(BrandService $brandService, Request $request): Response
+    {
+        $formBrandEstimate = $this->createForm(BrandType::class);
+
+        if ($formBrandEstimate->isSubmitted() && $formBrandEstimate->isValid()) {
+            $brand = $request->request->get('brand');
+            $sessionEstimate = $request->getSession();
+
+            $sessionEstimate->set('brandEstimate', $brand);
+
+            return $this->redirectToRoute(
+                'app_smartphone_model',
+                [],
+                Response::HTTP_SEE_OTHER);
+        }
+
+        $brands = $brandService->getBrands();
+
+        return $this->render('smartphone/brand.html.twig', [
+            'formBrandEstimate' => $formBrandEstimate->createView(),
+            'brands' => $brands,
+        ]);
+
+    }
+
+
 }
