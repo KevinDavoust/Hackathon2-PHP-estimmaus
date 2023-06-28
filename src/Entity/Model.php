@@ -30,6 +30,9 @@ class Model
     #[ORM\OneToMany(mappedBy: 'model', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picturePath = null;
+
     public function __construct()
     {
         $this->smartphones = new ArrayCollection();
@@ -114,6 +117,18 @@ class Model
                 $smartphone->setModel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPicturePath(): ?string
+    {
+        return $this->picturePath;
+    }
+
+    public function setPicturePath(?string $picturePath): static
+    {
+        $this->picturePath = $picturePath;
 
         return $this;
     }
