@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MemoryRepository;
+use App\Repository\StorageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: MemoryRepository::class)]
-class Memory
+#[ORM\Entity(repositoryClass: StorageRepository::class)]
+class Storage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
