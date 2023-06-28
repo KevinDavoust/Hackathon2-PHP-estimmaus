@@ -15,12 +15,12 @@ class SessionEstimateService
         $this->entityManager = $entityManager;
     }
 
-    public function addToEstimateSession(string $key, string $entityName, string $parameter, string $value, Request $request): void
+    public function addToEstimateSession(string $key, string $entityName, string $columnName, string $value, Request $request): void
     {
 
         $estimateSession = $request->getSession();
 
-        $entity = $this->entityManager->getRepository($entityName)->findOneBy([$parameter => $value]);
+        $entity = $this->entityManager->getRepository($entityName)->findOneBy([$columnName => $value]);
 
         $estimateSession->set($key, $entity);
     }
