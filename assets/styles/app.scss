@@ -1,8 +1,11 @@
 @import "~bootstrap";
+@import "_includes/variables.scss";
+@import "_includes/button.scss";
 
 body {
   color: #000000;
-  background-color: #f5f5f5;
+  font-family: 'fira-sans', sans-serif;
+  background-color: $background;
   background-image: url("../images/logoC-opacity50.png");
   background-repeat: no-repeat;
   background-position: 90% 10%;
