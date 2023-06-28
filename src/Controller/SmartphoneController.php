@@ -6,6 +6,7 @@ use App\Entity\Smartphone;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
 use App\Form\SmartphoneType;
+use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
 use App\Service\SessionEstimateService;
@@ -121,12 +122,33 @@ class SmartphoneController extends AbstractController
                 Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('smartphone/brand.html.twig', [
+        return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
         ]);
 
     }
 
+    #[Route('/state', name: 'app_smartphone_state', methods: ['GET, POST'])]
+    public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    {
+        $formStateEstimate = $this->createForm(StateEstimateType::class);
+
+        if ($formStateEstimate->isSubmitted() && $formStateEstimate->isValid()) {
+            $stateType = $request->request->get('state');
+
+            $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
+
+            return $this->redirectToRoute(
+                'app_smartphone_result',
+                [],
+                Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('smartphone/state.html.twig', [
+            'formModelEstimate' => $formStateEstimate->createView(),
+        ]);
+
+    }
 
 
 }
