@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Memory{% endblock %}
+
+{% block body %}
+    <h1>Edit Memory</h1>
+
+    {{ include('memory/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_memory_index') }}">back to list</a>
+
+    {{ include('memory/_delete_form.html.twig') }}
+{% endblock %}
