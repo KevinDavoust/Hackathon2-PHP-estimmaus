@@ -38,6 +38,7 @@ class BrandFixtures extends Fixture
         foreach ($brandNames as $key => $brandName) {
             $brand = new Brand();
             $brand->setName($brandName);
+            $brand->setPicturePath("test.png");
 
             $manager->persist($brand);
             $this->addReference("brand_" . $brand->getName(), $brand);

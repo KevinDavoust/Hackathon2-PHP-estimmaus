@@ -42,6 +42,7 @@ class ModelFixtures extends Fixture implements DependentFixtureInterface
             $model->setName($smartphoneModel["model"]);
             $model->setBrand($this->getReference("brand_" . $smartphoneModel["brand"]));
             $model->setYear($smartphoneModel["year"]);
+            $model->setPicturePath("test.png");
 
             $manager->persist($model);
             $this->setReference("model_" . str_replace(" ", "_", $model->getName()), $model);
