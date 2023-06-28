@@ -16,12 +16,23 @@ class BrandFixtures extends Fixture
                 "Samsung",
                 "Huawei",
                 "Xiaomi",
-                "OnePlus",
-                "Google",
                 "Oppo",
                 "Vivo",
+                "OnePlus",
+                "Google",
+                "Motorola",
                 "LG",
-                "Motorola"
+                "Sony",
+                "Nokia",
+                "Realme",
+                "Lenovo",
+                "HTC",
+                "Asus",
+                "BlackBerry",
+                "ZTE",
+                "Meizu",
+                "Honor",
+                "Autres"
             ];
 
         foreach ($brandNames as $key => $brandName) {
