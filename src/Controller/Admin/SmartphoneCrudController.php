@@ -31,7 +31,7 @@ class SmartphoneCrudController extends AbstractCrudController
             AssociationField::new('memory', 'RAM'),
             AssociationField::new('storage', 'Stockage'),
             AssociationField::new('state', 'État'),
-            AssociationField::new('category', 'Catégorie'),
+            AssociationField::new('category', 'Catégorie')->hideOnForm(),
             IntegerField::new('totalIndice', 'Indice total')->hideOnForm(),
         ];
     }
