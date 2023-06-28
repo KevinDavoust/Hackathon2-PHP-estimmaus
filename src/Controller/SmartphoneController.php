@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\Smartphone;
 use App\Form\BrandType;
+use App\Form\ModelEstimateType;
 use App\Form\SmartphoneType;
 use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
+use App\Service\SessionEstimateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -79,15 +81,14 @@ class SmartphoneController extends AbstractController
     }
 
     #[Route('/brand', name: 'app_smartphone_brand', methods: ['GET, POST'])]
-    public function brandEstimate(BrandService $brandService, Request $request): Response
+    public function brandEstimate(SessionEstimateService $sessionEstimateService, BrandService $brandService, Request $request): Response
     {
         $formBrandEstimate = $this->createForm(BrandType::class);
 
         if ($formBrandEstimate->isSubmitted() && $formBrandEstimate->isValid()) {
-            $brand = $request->request->get('brand');
-            $sessionEstimate = $request->getSession();
+            $brandName = $request->request->get('brand');
 
-            $sessionEstimate->set('brandEstimate', $brand);
+            $sessionEstimateService->addToEstimateSession('brandEstimate', 'Brand', 'name', $brandName, $request);
 
             return $this->redirectToRoute(
                 'app_smartphone_model',
@@ -103,6 +104,29 @@ class SmartphoneController extends AbstractController
         ]);
 
     }
+
+    #[Route('/model', name: 'app_smartphone_model', methods: ['GET, POST'])]
+    public function modelEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    {
+        $formModelEstimate = $this->createForm(ModelEstimateType::class);
+
+        if ($formModelEstimate->isSubmitted() && $formModelEstimate->isValid()) {
+            $modelName = $request->request->get('model');
+
+            $sessionEstimateService->addToEstimateSession('modelEstimate', 'Model', 'name', $modelName, $request);
+
+            return $this->redirectToRoute(
+                'app_smartphone_state',
+                [],
+                Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('smartphone/brand.html.twig', [
+            'formModelEstimate' => $formModelEstimate->createView(),
+        ]);
+
+    }
+
 
 
 }
