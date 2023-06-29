@@ -59,7 +59,7 @@ class HomeController extends AbstractController
                     $errorRam = 'RAM insuffisante';
                 }
                 if ($storage < 16) {
-                    $errorStorage = 'Mémoire insuffisante';
+                    $errorStorage = 'Capacité de stockage insuffisante';
                 }
             }
         }

@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Etape 4 : état{% endblock %}
+
 {% block body %}
-
-
 
 <div class="ec-model card mx-auto ec-state">
     <h1 class="ec-form-title">État du téléphone</h1>
     {#<div class="ec-radios">#}
     {{ form_start(formStateEstimate) }}
         {% for state in states %}
-
             <div class="ec-radio">
                 <input type="radio" id="radio{{loop.index }}" value="{{ state.type }}" name="{{ field_name(formStateEstimate.type) }}">
                 <label for="radio{{loop.index }}" class="ec-label-state">

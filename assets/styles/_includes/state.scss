@@ -95,3 +95,9 @@ input[type="radio"]:checked + label {
   width: 140px !important;
 }
 
+.ec-label-state:hover {
+  background: $light-blue;//hsla(150, 75%, 50%, 1);
+  color: hsla(215, 0%, 100%, 1);
+  }
+
+

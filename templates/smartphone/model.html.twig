@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Etape 3 : modèle{% endblock %}
+
 {% block body %}
     <div class="ec-model card mx-auto">
         <div class="col-8 m-auto">
@@ -10,7 +12,7 @@
                 {{ form_widget(formModelEstimate.name) }}
             </div>
             <div class="text-center p-5">
-                <input class="ec-button" type="submit" value="valider">
+                <input class="ec-button" type="submit" value="Valider">
             </div>
             {{ form_end(formModelEstimate) }}
         </div>
