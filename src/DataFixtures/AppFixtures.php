@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\City;
 use App\Entity\Indicator;
 use App\Entity\Memory;
 use App\Entity\Model;
@@ -207,6 +208,26 @@ class AppFixtures extends Fixture
             $manager->persist($state);
             $states[] = $state;
         }
+        $cities = array(
+            array('Ville' => 'Paris', 'zipCode' => '75000'),
+            array('Ville' => 'Marseille', 'zipCode' => '13000'),
+            array('Ville' => 'Lyon', 'zipCode' => '69000'),
+            array('Ville' => 'Toulouse', 'zipCode' => '31000'),
+            array('Ville' => 'Nice', 'zipCode' => '06000'),
+            array('Ville' => 'Nantes', 'zipCode' => '44000'),
+            array('Ville' => 'Strasbourg', 'zipCode' => '67000'),
+            array('Ville' => 'Montpellier', 'zipCode' => '34000'),
+            array('Ville' => 'Bordeaux', 'zipCode' => '33000'),
+            array('Ville' => 'Lille', 'zipCode' => '59000')
+        );
+
+        foreach ($cities as $key => $cityData) {
+            $city = new City();
+            $city->setName($cityData['Ville']);
+            $city->setZipCode($cityData['zipCode']);
+            $this->addReference("city_" . $key, $city);
+            $manager->persist($city);
+        }
 
         $phonesAmount = 20;
 
@@ -218,6 +239,7 @@ class AppFixtures extends Fixture
             $smartphone->setStorage($storages[array_rand($storages)]);
             $smartphone->setState($states[array_rand($states)]);
             $smartphone->setCategory($categories[array_rand($categories)]);
+            $smartphone->setCity($this->getReference("city_" . rand(0, 9)));
 
             $manager->persist($smartphone);
         }
