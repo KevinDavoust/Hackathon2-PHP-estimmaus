@@ -14,21 +14,21 @@ class ContactFormType extends AbstractType
             ->add("origin", TextType::class, [
                 "attr" => [
                     "class" => 'ec-form ec-contact-form-small',
-                    "placeholder" => "Votre Adresse"
+                    "placeholder" => "Votre adresse e-mail"
                 ],
                 "label" => false
             ])
             ->add("subject", TextType::class, [
                 "attr" => [
                     "class" => 'ec-form ec-contact-form-small',
-                    "placeholder" => "Sujet"
+                    "placeholder" => "Sujet du message"
                 ],
                 "label" => false
             ])
             ->add("body", TextType::class, [
                 "attr" => [
                     "class" => 'ec-form ec-contact-form-big',
-                    "placeholder" => "Corps"
+                    "placeholder" => "Corps du message"
                 ],
                 "label" => false
             ])
