@@ -27,4 +27,15 @@
 
 .ec-button:hover {
     background: $dark-blue;
+    transition: 0.2s;
+}
+
+.ec-password {
+  position: relative;
+}
+
+.ec-password button {
+  position: absolute;
+  right: -1rem;
+  top: calc(50% - 1.2rem);
 }

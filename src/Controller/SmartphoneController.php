@@ -79,7 +79,6 @@ class SmartphoneController extends AbstractController
             $modelName = $formModelEstimate->getData()->getName();
 
             $sessionEstimateService->addToEstimateSession('modelEstimate', 'model', 'name', $modelName, $request);
-
             return $this->redirectToRoute(
                 'app_smartphone_state',
                 [],
@@ -166,16 +165,14 @@ class SmartphoneController extends AbstractController
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
     public function stateEstimate(SessionEstimateService $sessionEstimateService, StateService $stateService, Request $request): Response
     {
-        $session = $request->getSession()->get('storageEstimate');
-        var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);
 
-        if ($formStateEstimate->isSubmitted() && $formStateEstimate->isValid()) {
+        if ($formStateEstimate->isSubmitted()) {
             //dd($formStateEstimate->getData()->getType());
             //$stateType = $formStateEstimate->get('type')->getData()->getType();
-            $stateType = $formStateEstimate->getData()->getType();
-
+            //dd($formStateEstimate->get('type')->getViewData());
+            $stateType = $formStateEstimate->get('type')->getViewData();
             $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
 
             return $this->redirectToRoute(
