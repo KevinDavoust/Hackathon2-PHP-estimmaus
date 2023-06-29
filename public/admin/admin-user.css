@@ -1,0 +1,77 @@
+.sidebar, .resizer-handler-left {
+  background-color: #FCD85A;
+}
+
+.logo, .logo-custom {
+  display: none !important;
+}
+
+#main-menu .menu .menu-item-contents {
+  padding-top: 20px !important;
+}
+.menu-item-label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: black;
+}
+#main-menu .menu .menu-icon {
+    color: black;
+    }
+#main-menu .menu .menu-item.active {
+  background-color: #FCD85A !important;
+}
+
+#main-menu .menu .menu-header {
+  color: black;
+  text-decoration: underline;
+}
+#main-menu .menu .menu-item.active:not(.expanded) .menu-icon, #main-menu .menu .menu-item.active:not(.expanded) a {
+  color: #334254;
+}
+
+body, .content-header, .resizer-handler-right, .content-header, .content-top  {
+  background-color: #BCD9ED;
+}
+
+.content-top, th {
+  border-bottom: 3px solid #489ED7 !important;
+}
+.datagrid thead th, .content-top, .datagrid td {
+  box-shadow: none;
+}
+
+td {
+  border-bottom: 2px solid grey !important;
+  color: black;
+  font-size: 1.2em;
+}
+td:hover {
+  background-color: red;
+}
+a , .btn-label, .fa, .list-pagination-counter {
+  color: black;
+  font-size: 1em;
+}
+
+.dropdown-settings .dropdown-settings-button, .user-menu-wrapper a.user-details, .user-menu-wrapper a.user-details:hover {
+  color: black;
+  font-size: 1.2rem;
+}
+
+.datagrid thead a, .datagrid thead span {
+  color: black;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.action-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.btn {
+  background-color: #489ED7;
+}
+
+
