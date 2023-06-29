@@ -11,11 +11,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    /*#[Route('/home', name: 'app_home')]*/
     public function index(): Response
     {
         return $this->render('home/index.html.twig');
     }
+
 
     #[Route('/faq', name: 'app_faq')]
     public function faq(): Response
@@ -51,5 +52,11 @@ class HomeController extends AbstractController
             'form' => $form,
             'error' => $error,
         ]);
+    }
+
+    #[Route('/accueil', name: 'app_accueil')]
+    public function accueil(): Response
+    {
+        return $this->render('home/accueil.html.twig');
     }
 }

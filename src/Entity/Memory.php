@@ -18,9 +18,6 @@ class Memory
     #[ORM\Column(nullable: true)]
     private ?int $size = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $indice = null;
-
     #[ORM\OneToMany(mappedBy: 'memory', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
@@ -42,18 +39,6 @@ class Memory
     public function setSize(?int $size): static
     {
         $this->size = $size;
-
-        return $this;
-    }
-
-    public function getIndice(): ?int
-    {
-        return $this->indice;
-    }
-
-    public function setIndice(?int $indice): static
-    {
-        $this->indice = $indice;
 
         return $this;
     }
