@@ -21,9 +21,6 @@ class Memory
     #[ORM\OneToMany(mappedBy: 'memory', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
-    #[ORM\OneToOne(targetEntity: self::class, cascade: ['persist', 'remove'])]
-    private ?self $indicator = null;
-
     public function __construct()
     {
         $this->smartphones = new ArrayCollection();
@@ -80,17 +77,5 @@ class Memory
     {
         // TODO: Implement __toString() method.
         return $this->getSize();
-    }
-
-    public function getIndicator(): ?self
-    {
-        return $this->indicator;
-    }
-
-    public function setIndicator(?self $indicator): static
-    {
-        $this->indicator = $indicator;
-
-        return $this;
     }
 }

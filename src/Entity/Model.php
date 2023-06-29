@@ -30,8 +30,8 @@ class Model
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picturePath = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Indicator $indicator = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $indicator = null;
 
     public function __construct()
     {
@@ -127,12 +127,12 @@ class Model
         return $this;
     }
 
-    public function getIndicator(): ?Indicator
+    public function getIndicator(): ?string
     {
         return $this->indicator;
     }
 
-    public function setIndicator(?Indicator $indicator): static
+    public function setIndicator(?string $indicator): static
     {
         $this->indicator = $indicator;
 

@@ -21,9 +21,6 @@ class Storage
     #[ORM\OneToMany(mappedBy: 'storage', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Indicator $indicator = null;
-
     public function __construct()
     {
         $this->smartphones = new ArrayCollection();
@@ -80,17 +77,5 @@ class Storage
     {
         // TODO: Implement __toString() method.
         return $this->getSize();
-    }
-
-    public function getIndicator(): ?Indicator
-    {
-        return $this->indicator;
-    }
-
-    public function setIndicator(?Indicator $indicator): static
-    {
-        $this->indicator = $indicator;
-
-        return $this;
     }
 }
