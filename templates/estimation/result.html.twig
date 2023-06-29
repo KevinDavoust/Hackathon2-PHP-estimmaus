@@ -5,7 +5,76 @@
 {% endblock %}
 
 {% block body %}
-	<pre>
-    {{ dump(estimation) }}
-</pre>
-{% endblock %}
+	<div class="ec-model card mx-auto">
+
+		<div class="ec-resultsContainer">
+			<img class="ec-phoneImg" src={{ asset("build/images/iphone13pro.jpg")}} alt="Picture of iPhone 13 Pro">
+			<div>
+				<h5>Estimé à:</h5>
+				<h1>{{ estimation }}€</h1>
+			</div>
+		</div>
+		<div class="ec-resultsDetails">
+			<h1>{{ app.session.get("modelEstimate").getName() }}
+				-
+				{{app.session.get("modelEstimate").getYear()}}
+			</h1>
+
+			<table>
+				<thead></thead>
+				<tbody>
+					<tr>
+						<th>
+							Marque
+						</th>
+						<td>
+							{{ app.session.get("brandEstimate").getName() }}
+						</td>
+					</tr>
+					<tr>
+						<th>
+							Mémoire Vive
+						</th>
+						<td>
+							???
+						</td>
+					</tr>
+					<tr>
+						<th>
+							Stockage
+						</th>
+						<td>
+							???
+						</td>
+					</tr>
+					<tr>
+						<th>
+							État
+						</th>
+						<td>
+							{{ app.session.get("stateEstimate").getType() }}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="ec-buttons">
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Points de vente
+				</button>
+				<ul class="dropdown-menu">
+					{% for city in cities %}
+						<li>
+							<a class="dropdown-item" href="#">{{ city.name }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+
+			<a href="">
+				<button class="ec-button">Sauvegarder</button>
+			</a>
+		</div>
+	{% endblock %}

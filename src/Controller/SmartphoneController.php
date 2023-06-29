@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/smartphone')]
 class SmartphoneController extends AbstractController
 {
-    /*    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]*/
+    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]
     public function index(SmartphoneRepository $smartphoneRepository): Response
     {
         return $this->render('smartphone/index.html.twig', [
@@ -131,8 +131,6 @@ class SmartphoneController extends AbstractController
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
     public function stateEstimate(SessionEstimateService $sessionEstimateService, StateService $stateService, Request $request): Response
     {
-        $session = $request->getSession()->get('storageEstimate');
-        var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);
 
