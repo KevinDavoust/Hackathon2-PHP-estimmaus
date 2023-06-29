@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Indicator;
 use App\Entity\Memory;
 use App\Entity\Model;
 use App\Entity\Smartphone;
@@ -16,6 +17,53 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        $indicatorsData = [
+            "model" => [
+                "budget" => 1,
+                "flagship" => 2,
+                "premium" => 3,
+                "professionnal" => 4
+            ],
+            "year" => [
+                2017 => 1,
+                2019 => 2,
+                2021 => 3,
+                2023 => 4,
+            ],
+            "memory" => [
+                2 => 1,
+                8 => 2,
+                12 => 3,
+                16 => 4
+            ],
+            "storage" => [
+                16 => 1,
+                32 => 2,
+                64 => 3,
+                128 => 4
+            ],
+            "state" => [
+                "reparable" => 1,
+                "reconditionable" => 2,
+                "reconditionné" => 3,
+                "neuf" => 4
+            ]
+        ];
+
+        $indicators = [];
+        foreach ($indicatorsData as $characteristic => $details) {
+            foreach ($details as $classification => $value) {
+                $indicator = new Indicator();
+
+                $indicator->setCharacteristic($characteristic);
+                $indicator->setClassification($classification);
+                $indicator->setValue($value);
+
+                $manager->persist($indicator);
+                $indicators[] = $indicator;
+            }
+        }
+
         $brandNames =
             [
                 "Apple",
@@ -51,26 +99,33 @@ class AppFixtures extends Fixture
         }
 
         $smartphoneModels = [
-            ["model" => "iPhone 13 Pro", "brand" => "Apple", "year" => 2021],
-            ["model" => "Samsung Galaxy S21 Ultra", "brand" => "Samsung", "year" => 2021],
-            ["model" => "Huawei P40 Pro", "brand" => "Huawei", "year" => 2020],
-            ["model" => "Xiaomi Mi 11", "brand" => "Xiaomi", "year" => 2020],
-            ["model" => "Oppo Find X3 Pro", "brand" => "Oppo", "year" => 2021],
-            ["model" => "Vivo X60 Pro+", "brand" => "Vivo", "year" => 2021],
-            ["model" => "OnePlus 9 Pro", "brand" => "OnePlus", "year" => 2021],
-            ["model" => "Google Pixel 6 Pro", "brand" => "Google", "year" => 2021],
-            ["model" => "Motorola Edge Plus", "brand" => "Motorola", "year" => 2020],
-            ["model" => "LG Velvet", "brand" => "LG", "year" => 2020],
-            ["model" => "Sony Xperia 1 III", "brand" => "Sony", "year" => 2021],
-            ["model" => "Nokia 8.3 5G", "brand" => "Nokia", "year" => 2020],
-            ["model" => "Realme GT", "brand" => "Realme", "year" => 2021],
-            ["model" => "Lenovo Legion Phone Duel 2", "brand" => "Lenovo", "year" => 2021],
-            ["model" => "HTC U12+", "brand" => "HTC", "year" => 2018],
-            ["model" => "Asus ROG Phone 5", "brand" => "Asus", "year" => 2021],
-            ["model" => "BlackBerry KEY2", "brand" => "BlackBerry", "year" => 2018],
-            ["model" => "ZTE Axon 30 Ultra", "brand" => "ZTE", "year" => 2021],
-            ["model" => "Meizu 18 Pro", "brand" => "Meizu", "year" => 2021],
-            ["model" => "Honor 50 Pro", "brand" => "Honor", "year" => 2021]
+            ["model" => "iPhone 13 Pro", "brand" => "Apple", "year" => 2021,],
+            ["model" => "Samsung Galaxy S21 Ultra", "brand" => "Samsung", "year" => 2021,],
+            ["model" => "Huawei P40 Pro", "brand" => "Huawei", "year" => 2020,],
+            ["model" => "Xiaomi Mi 11", "brand" => "Xiaomi", "year" => 2020,],
+            ["model" => "Oppo Find X3 Pro", "brand" => "Oppo", "year" => 2021,],
+            ["model" => "Vivo X60 Pro+", "brand" => "Vivo", "year" => 2021,],
+            ["model" => "OnePlus 9 Pro", "brand" => "OnePlus", "year" => 2021,],
+            ["model" => "Google Pixel 6 Pro", "brand" => "Google", "year" => 2021,],
+            ["model" => "Motorola Edge Plus", "brand" => "Motorola", "year" => 2020,],
+            ["model" => "LG Velvet", "brand" => "LG", "year" => 2020,],
+            ["model" => "Sony Xperia 1 III", "brand" => "Sony", "year" => 2021,],
+            ["model" => "Nokia 8.3 5G", "brand" => "Nokia", "year" => 2020,],
+            ["model" => "Realme GT", "brand" => "Realme", "year" => 2021,],
+            ["model" => "Lenovo Legion Phone Duel 2", "brand" => "Lenovo", "year" => 2021,],
+            ["model" => "HTC U12+", "brand" => "HTC", "year" => 2018,],
+            ["model" => "Asus ROG Phone 5", "brand" => "Asus", "year" => 2021,],
+            ["model" => "BlackBerry KEY2", "brand" => "BlackBerry", "year" => 2018,],
+            ["model" => "ZTE Axon 30 Ultra", "brand" => "ZTE", "year" => 2021,],
+            ["model" => "Meizu 18 Pro", "brand" => "Meizu", "year" => 2021,],
+            ["model" => "Honor 50 Pro", "brand" => "Honor", "year" => 2021,]
+        ];
+
+        $modelClassifications = [
+            "budget",
+            "flagship",
+            "premium",
+            "professionnal"
         ];
 
         $models = [];
@@ -79,6 +134,7 @@ class AppFixtures extends Fixture
 
             $model->setName($smartphoneModel["model"]);
             $model->setYear($smartphoneModel["year"]);
+            $model->setIndicator($modelClassifications[array_rand($modelClassifications)]);
             $model->setPicturePath("test.png");
 
             foreach ($brands as $brand) {

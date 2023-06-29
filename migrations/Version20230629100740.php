@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230629092051 extends AbstractMigration
+final class Version20230629100740 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,8 +22,9 @@ final class Version20230629092051 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE brand (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) DEFAULT NULL, picture_path VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(50) DEFAULT NULL, val_min INT DEFAULT NULL, val_max INT DEFAULT NULL, price DOUBLE PRECISION DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE indicator (id INT AUTO_INCREMENT NOT NULL, characteristic VARCHAR(255) NOT NULL, classification VARCHAR(255) NOT NULL, value INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE memory (id INT AUTO_INCREMENT NOT NULL, size INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE model (id INT AUTO_INCREMENT NOT NULL, brand_id INT DEFAULT NULL, name VARCHAR(255) DEFAULT NULL, indice INT DEFAULT NULL, year INT DEFAULT NULL, picture_path VARCHAR(255) DEFAULT NULL, INDEX IDX_D79572D944F5D008 (brand_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE model (id INT AUTO_INCREMENT NOT NULL, brand_id INT DEFAULT NULL, name VARCHAR(255) DEFAULT NULL, year INT DEFAULT NULL, picture_path VARCHAR(255) DEFAULT NULL, indicator VARCHAR(255) DEFAULT NULL, INDEX IDX_D79572D944F5D008 (brand_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE smartphone (id INT AUTO_INCREMENT NOT NULL, model_id INT DEFAULT NULL, memory_id INT DEFAULT NULL, storage_id INT DEFAULT NULL, state_id INT DEFAULT NULL, category_id INT DEFAULT NULL, total_indice DOUBLE PRECISION DEFAULT NULL, INDEX IDX_26B07E2E7975B7E7 (model_id), INDEX IDX_26B07E2ECCC80CB3 (memory_id), INDEX IDX_26B07E2E5CC5DB90 (storage_id), INDEX IDX_26B07E2E5D83CC1 (state_id), INDEX IDX_26B07E2E12469DE2 (category_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE state (id INT AUTO_INCREMENT NOT NULL, type VARCHAR(255) DEFAULT NULL, percentage DOUBLE PRECISION DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE storage (id INT AUTO_INCREMENT NOT NULL, size INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
@@ -48,6 +49,7 @@ final class Version20230629092051 extends AbstractMigration
         $this->addSql('ALTER TABLE smartphone DROP FOREIGN KEY FK_26B07E2E12469DE2');
         $this->addSql('DROP TABLE brand');
         $this->addSql('DROP TABLE category');
+        $this->addSql('DROP TABLE indicator');
         $this->addSql('DROP TABLE memory');
         $this->addSql('DROP TABLE model');
         $this->addSql('DROP TABLE smartphone');
