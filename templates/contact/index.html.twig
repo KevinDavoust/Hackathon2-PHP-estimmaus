@@ -5,16 +5,14 @@
 {% endblock %}
 
 {% block body %}
-
-	{# {% if app.flashes is defined %} #}
 	{% for flash in app.flashes %}
-
-		{{flash.0}}
+		{{flash}}
 	{% endfor %}
-	{# {% endif %} #}
 
-	{{ form_start(contactForm) }}
-	{{form_widget(contactForm)}}
-	<button type="submit">Submit</button>
-	{{ form_end(contactForm) }}
+	<div class="ec-contact-form-container">
+		{{ form_start(contactForm) }}
+		{{form_widget(contactForm)}}
+		<button class="ec-button" type="submit">Submit</button>
+		{{ form_end(contactForm) }}
+	</div>
 {% endblock %}

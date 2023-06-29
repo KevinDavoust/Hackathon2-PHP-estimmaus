@@ -192,6 +192,8 @@ class AppFixtures extends Fixture
             $categories[] = $category;
         }
 
+
+
         $stateTypes = [
             "RÉPARABLE",
             "RECONDITIONNABLE",

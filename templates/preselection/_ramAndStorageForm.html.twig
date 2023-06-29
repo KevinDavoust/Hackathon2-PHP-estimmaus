@@ -1,0 +1,32 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="col">
+{#    <div class="em-error-selection p-2 d-flex flex-column justify-content-center align-items-center">
+        <p class="text-center">Malheureusement ce téléphone ne répond pas aux critères de sélection pour l'estimation.</p>
+        <a href="" class="btn em-btn-retour">Revenir à l'accueil</a>
+    </div>#}
+    <div class="col em-ram">
+        {{ form_row(form.RAM) }}
+        {% if errorRam is not empty %}
+            <div class="d-flex">
+                <i class="bi bi-exclamation-circle" style="font-size: 1rem; color: #df9da2;"></i>
+                <p class="em-error">{{ errorRam }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col em-ram">
+    {{ form_row(form.storage) }}
+        {% if errorStorage is not empty %}
+            <div class="d-flex">
+                <i class="bi bi-exclamation-circle" style="font-size: 1rem; color: #df9da2;"></i>
+                <p class="em-error">{{ errorStorage }}</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="w-100 d-flex justify-content-center">
+    <button class="btn p-2">{{ form_row(form.save, {'attr': {'class': 'em-save-ram'}}) }}</button>
+        {{ form_row(form._token) }}
+    </div>
+</div>
+{{ form_end(form, {'render_rest': false}) }}

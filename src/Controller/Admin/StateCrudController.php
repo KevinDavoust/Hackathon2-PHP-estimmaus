@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\State;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -30,6 +31,12 @@ class StateCrudController extends AbstractCrudController
             TextField::new('type', 'Type'),
             IntegerField::new('percentage', 'Pourcentage de réduction associé'),
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addCssFile('admin/admin-user.css');
     }
 
 }
