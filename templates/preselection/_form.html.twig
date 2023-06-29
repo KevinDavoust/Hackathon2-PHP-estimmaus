@@ -2,36 +2,39 @@
 
 {{ form_start(form) }}
 <div class="col">
+    <div class="em-error-selection p-2 d-flex flex-column justify-content-center align-items-center">
+        <p class="text-center">Malheureusement ce téléphone ne répond pas aux critères de sélection pour l'estimation.</p>
+        <p class="btn em-btn-retour">Changer le critère</p>
+        <a href="{{ path('app_accueil') }}" class="btn em-btn-retour">Revenir à l'accueil</a>
+    </div>
     <div class="col em-accessories">
         <div class="form-check form-switch">
         {{ form_row(form.accessories, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnAccessories">Suivant</div>
+        <div class="em-btnAccessories">Valider</div>
     </div>
     <div class="col em-system">
         <div class="form-check form-switch">
         {{ form_row(form.system, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnSystem">Suivant</div>
+        <div class="em-btnSystem">Valider</div>
     </div>
     <div class="col em-screen">
         <div class="form-check form-switch">
         {{ form_row(form.screen, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnScreen">Suivant</div>
+        <div class="em-btnScreen">Valider</div>
     </div>
     <div class="col em-network">
         <div class="form-check form-switch">
         {{ form_row(form.network, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnNetwork">Suivant</div>
+        <div class="em-btnNetwork">Valider</div>
     </div>
-    <div class="col em-ram">
-        {{ form_row(form.RAM) }}
-        {{ form_row(form.storage) }}
+    <div class="w-100 d-flex justify-content-center">
+        {{ form_row(form.save, {'attr': {'class': 'em-save'}}) }}
         {{ form_row(form._token) }}
     </div>
-<button class="btn em-save-btn">{{ form_row(form.save) }}</button>
 </div>
 {{ form_end(form, {'render_rest': false}) }}
 
@@ -42,20 +45,17 @@
     let btnSystem = document.querySelector('.em-btnSystem');
     let btnScreen = document.querySelector('.em-btnScreen');
     let btnNetwork = document.querySelector('.em-btnNetwork');
-    let btnRam = document.querySelector('.em-btnRam');
+    let btnNextStep = document.querySelector('.em-save');
 
     let inputAccessories = document.getElementById('preselection_accessories');
     let inputSystem = document.getElementById('preselection_system');
     let inputScreen = document.getElementById('preselection_screen');
     let inputNetwork = document.getElementById('preselection_network');
-    let inputRam = document.getElementById('preselection_ram');
-    let inputStorage = document.getElementById('preselection_storage');
 
     let accessories = document.querySelector('.em-accessories');
     let system = document.querySelector('.em-system');
     let screen = document.querySelector('.em-screen');
     let network = document.querySelector('.em-network');
-    let ram = document.querySelector('.em-ram');
 
     /////////////////// accessories
 
@@ -71,7 +71,7 @@
     /////////////////// system
 
     btnSystem.addEventListener('click', () => {
-        if (inputAccessories.checked == true){
+        if (inputSystem.checked == true){
             gsap.fromTo('.em-screen', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnSystem', {opacity: 0, duration: 2});
         } else {
@@ -82,7 +82,7 @@
     /////////////////// screen
 
     btnScreen.addEventListener('click', () => {
-        if (inputAccessories.checked == true){
+        if (inputScreen.checked == true){
             gsap.fromTo('.em-network', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnScreen', {opacity: 0, duration: 2});
         } else {
@@ -93,9 +93,10 @@
     /////////////////// network
 
     btnNetwork.addEventListener('click', () => {
-        if (inputAccessories.checked == true){
+        if (inputNetwork.checked == true){
             gsap.fromTo('.em-ram', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnNetwork', {opacity: 0, duration: 2});
+            gsap.set(btnNextStep, {opacity: 1, duration: 2});
         } else {
             gsap.to(error, {opacity: 1, x:-300, duration: 2});
         }

@@ -5,11 +5,15 @@
 {% block body %}
 <div class="em-form-container">
 
-<h1>Je vérifie les critères</h1>
+<h1 class="mb-5">Je vérifie les critères</h1>
 
-    <div class="em-error-selection">Malheureusement ce téléphone ne répond pas aux critères de sélection pour l'estimation.</div>
+    {% if app.request.get('_route') is same as('app_preselection_1') %}
+        {{ include('preselection/_form.html.twig') }}
+    {% endif %}
 
-    {{ include('preselection/_form.html.twig') }}
+    {% if app.request.get('_route') is same as('app_preselection_2') %}
+        {{ include('preselection/_ramAndStorageForm.html.twig') }}
+    {% endif %}
 
 </div>
 
