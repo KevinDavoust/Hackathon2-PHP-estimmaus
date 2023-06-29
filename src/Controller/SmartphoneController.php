@@ -13,6 +13,7 @@ use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
+use App\Service\ModelService;
 use App\Service\SessionEstimateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,11 +66,14 @@ class SmartphoneController extends AbstractController
     }
 
     #[Route('/model', name: 'app_smartphone_model', methods: ['GET', 'POST'])]
-    public function modelEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    public function modelEstimate(SessionEstimateService $sessionEstimateService, Request $request, ModelService $modelService): Response
     {
         $session = $request->getSession()->get('brandEstimate');
         var_dump($session);
-        $formModelEstimate = $this->createForm(ModelEstimateType::class);
+        $models = $modelService->getModelsByBrandId($request);
+        $formModelEstimate = $this->createForm(ModelEstimateType::class, null, [
+            'choices' => $models,
+        ]);
         $formModelEstimate->handleRequest($request);
 
         if ($formModelEstimate->isSubmitted() && $formModelEstimate->isValid()) {
