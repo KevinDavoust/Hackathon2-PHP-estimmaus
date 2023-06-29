@@ -75,4 +75,6 @@ class BrandController extends AbstractController
 
         return $this->redirectToRoute('app_brand_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
