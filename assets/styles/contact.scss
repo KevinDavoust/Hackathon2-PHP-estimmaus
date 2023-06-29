@@ -1,0 +1,35 @@
+ .ec-contact-form-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100vw;
+     border-width: 1px;
+     border-style: solid;
+     border-color: #9095A0FF;
+     border-radius: 4px;
+     margin-bottom: 48px;
+ }
+
+ .ec-contact-form-big {
+     width: 30vw;
+     height: 25vh;
+     margin-bottom: 5%;
+     padding-bottom: 11vw;
+     padding-left: 1vw;
+     text-align: start;
+ }
+
+ .ec-contact-form-small {
+     width: 30vw;
+     height: 5vh;
+     padding-left: 1vw;
+ }
+
+ .ec-contact-form>input {
+     text-align: start;
+     border-color: $background;
+     border-radius: 4px;
+     background-color: $background;
+     padding: 4px;
+ }
+
