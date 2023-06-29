@@ -3,8 +3,9 @@
 {% block title %}Préselection{% endblock %}
 
 {% block body %}
-<div class="em-form-container">
-
+{# <div class="em-form-container"> #}
+<div class="ec-model card mx-auto">
+    <div class="col-8 m-auto">
 <h1 class="mb-5">Je vérifie les critères</h1>
 
     {% if app.request.get('_route') is same as('app_preselection_1') %}
@@ -15,6 +16,7 @@
         {{ include('preselection/_ramAndStorageForm.html.twig') }}
     {% endif %}
 
+</div>
 </div>
 
 {% endblock %}
