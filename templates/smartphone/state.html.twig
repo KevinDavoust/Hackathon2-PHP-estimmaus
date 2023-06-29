@@ -2,12 +2,12 @@
 
 {% block body %}
 
-{{ form_start(formStateEstimate) }}
 
-<div class="em-form-container-state">
+
+<div class="ec-model card mx-auto ec-state">
     <h1 class="ec-form-title">État du téléphone</h1>
-    <div class="ec-radios">
-
+    {#<div class="ec-radios">#}
+    {{ form_start(formStateEstimate) }}
         {% for state in states %}
 
             <div class="ec-radio">
@@ -18,8 +18,8 @@
                 </label>
             </div>
         {% endfor %}
-    </div>
-    <input type="submit" value="valider" class="ec-button ec-button-state">
+    {#</div>#}
+    <input type="submit" value="Valider" class="ec-button ec-button-state">
     {{ form_end(formStateEstimate) }}
 </div>
 
