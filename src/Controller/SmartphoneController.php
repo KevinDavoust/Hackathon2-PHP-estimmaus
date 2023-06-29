@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\Smartphone;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
+use App\Form\MemoryEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
@@ -41,7 +42,8 @@ class SmartphoneController extends AbstractController
             return $this->redirectToRoute(
                 'app_smartphone_model',
                 [],
-                Response::HTTP_SEE_OTHER);
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         $brands = $brandService->getBrands();
@@ -50,7 +52,6 @@ class SmartphoneController extends AbstractController
             'formBrandEstimate' => $formBrandEstimate->createView(),
             'brands' => $brands,
         ]);
-
     }
 
     #[Route('/model', name: 'app_smartphone_model', methods: ['GET', 'POST'])]
@@ -67,21 +68,47 @@ class SmartphoneController extends AbstractController
             $sessionEstimateService->addToEstimateSession('modelEstimate', 'model', 'name', $modelName, $request);
 
             return $this->redirectToRoute(
-                'app_smartphone_state',
+                'app_smartphone_memory',
                 [],
-                Response::HTTP_SEE_OTHER);
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
         ]);
-
     }
+
+    #[Route('/memory', name: 'app_smartphone_memory', methods: ['GET', 'POST'])]
+    public function memoryEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    {
+        $session = $request->getSession()->get('brandEstimate');
+        var_dump($session);
+        $formMemoryEstimate = $this->createForm(MemoryEstimateType::class);
+        $formMemoryEstimate->handleRequest($request);
+
+        if ($formMemoryEstimate->isSubmitted() && $formMemoryEstimate->isValid()) {
+            $memorySize = $formMemoryEstimate->getData()->getSize();
+
+            $sessionEstimateService->addToEstimateSession("memoryEstimate", "memory", "size", $memorySize, $request);
+
+            return $this->redirectToRoute(
+                'app_smartphone_state',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
+        }
+
+        return $this->render('smartphone/memory.html.twig', [
+            "formMemoryEstimate" => $formMemoryEstimate
+        ]);
+    }
+
 
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
     public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     {
-        $session = $request->getSession()->get('modelEstimate');
+        $session = $request->getSession()->get('memoryEstimate');
         var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);
@@ -94,13 +121,13 @@ class SmartphoneController extends AbstractController
             return $this->redirectToRoute(
                 'app_smartphone_result',
                 [],
-                Response::HTTP_SEE_OTHER);
+                Response::HTTP_SEE_OTHER
+            );
         }
 
         return $this->render('smartphone/state.html.twig', [
             'formStateEstimate' => $formStateEstimate->createView(),
         ]);
-
     }
 
     #[Route('/result', name: 'app_smartphone_result', methods: ['GET', 'POST'])]
@@ -117,7 +144,6 @@ class SmartphoneController extends AbstractController
             'model' => $model,
             'state' => $state,
         ]);
-
     }
 
     #[Route('/new', name: 'app_smartphone_new', methods: ['GET', 'POST'])]
@@ -168,14 +194,10 @@ class SmartphoneController extends AbstractController
     #[Route('/{id}', name: 'app_smartphone_delete', methods: ['POST'])]
     public function delete(Request $request, Smartphone $smartphone, SmartphoneRepository $smartphoneRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$smartphone->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $smartphone->getId(), $request->request->get('_token'))) {
             $smartphoneRepository->remove($smartphone, true);
         }
 
         return $this->redirectToRoute('app_smartphone_index', [], Response::HTTP_SEE_OTHER);
     }
-
-
-
-
 }
