@@ -6,11 +6,13 @@ use App\Entity\Brand;
 use App\Entity\Smartphone;
 use App\Form\BrandPictureType;
 use App\Form\BrandType;
+use App\Form\CityEstimateType;
 use App\Form\ModelEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
+use App\Service\CityService;
 use App\Service\ModelService;
 use App\Service\SessionEstimateService;
 use App\Service\StateService;
@@ -86,6 +88,26 @@ class SmartphoneController extends AbstractController
 
         return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
+        ]);
+    }
+
+    #[Route('/city', name: 'app_smartphone_city', methods: ['GET', 'POST'])]
+    public function cityEstimate(SessionEstimateService $sessionEstimateService, Request $request, CityService $cityService): Response
+    {
+        $cities = $cityService->getCities();
+        $formCityEstimate = $this->createForm(CityEstimateType::class);
+        $formCityEstimate->handleRequest($request);
+
+        if ($formCityEstimate->isSubmitted() && $formCityEstimate->isValid()) {
+            $cityName = $formCityEstimate->getData()->getName();
+
+            $sessionEstimateService->addToEstimateSession('cityEstimate', 'city', 'name', $cityName, $request);
+
+            return $this->redirectToRoute('app_smartphone_brand', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('smartphone/city.html.twig', [
+            'form' => $formCityEstimate->createView(),
         ]);
     }
 

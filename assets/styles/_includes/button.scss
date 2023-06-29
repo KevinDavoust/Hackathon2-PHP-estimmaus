@@ -14,14 +14,15 @@
 }
 
 .ec-button {
-    width: 140px;
-    height: 36px;
-    background: $light-blue;
-    color: white;
-    font-size: 14px;
-    border-radius: 38px;
-    box-shadow: $box-shadow;
-    border: none;
+  //width: 140px;
+  //height: 36px;
+  background: $light-blue;
+  color: white;
+  font-size: 14px;
+  border-radius: 38px;
+  box-shadow: $box-shadow;
+  border: none;
+  padding: 3%;
 }
 
 .ec-button:hover {

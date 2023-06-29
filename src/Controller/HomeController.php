@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\PreselectionType;
 use App\Form\RamAndStorageType;
 use App\Repository\SmartphoneRepository;
+use App\Service\SessionEstimateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -40,7 +41,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/preselection/etape2', name: 'app_preselection_2', methods: ['POST', 'GET'])]
-    public function preselectionSuite(Request $request): Response
+    public function preselectionSuite(SessionEstimateService $sessionEstimateService, Request $request): Response
     {
         $form = $this->createForm(RamAndStorageType::class);
         $form->handleRequest($request);
@@ -50,10 +51,9 @@ class HomeController extends AbstractController
             $ram = $form->get('RAM')->getData();
             $storage = $form->get('storage')->getData();
             if ( $ram >= 2 && $storage >= 16) {
-                $sessionEstimate = $request->getSession();
-                $sessionEstimate->set('ramEstimate', $ram);
-                $sessionEstimate->set('storageEstimate', $storage);
-                return $this->redirectToRoute('app_smartphone_brand', [], Response::HTTP_SEE_OTHER);
+                $sessionEstimateService->addToEstimateSession('memoryEstimate', 'memory', 'size', $ram, $request);
+                $sessionEstimateService->addToEstimateSession('storageEstimate', 'storage', 'size', $storage, $request);
+                return $this->redirectToRoute('app_smartphone_city', [], Response::HTTP_SEE_OTHER);
             } else {
                 if ($ram < 2) {
                     $errorRam = 'RAM insuffisante';
