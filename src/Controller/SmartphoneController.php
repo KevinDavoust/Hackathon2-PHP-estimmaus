@@ -6,6 +6,7 @@ use App\Entity\Brand;
 use App\Entity\Smartphone;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
+use App\Form\MemoryEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
@@ -132,7 +133,7 @@ class SmartphoneController extends AbstractController
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
     public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     {
-        $session = $request->getSession()->get('modelEstimate');
+        $session = $request->getSession()->get('memoryEstimate');
         var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);

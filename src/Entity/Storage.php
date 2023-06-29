@@ -18,9 +18,6 @@ class Storage
     #[ORM\Column(nullable: true)]
     private ?int $size = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $indice = null;
-
     #[ORM\OneToMany(mappedBy: 'storage', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
@@ -42,18 +39,6 @@ class Storage
     public function setSize(?int $size): static
     {
         $this->size = $size;
-
-        return $this;
-    }
-
-    public function getIndice(): ?int
-    {
-        return $this->indice;
-    }
-
-    public function setIndice(?int $indice): static
-    {
-        $this->indice = $indice;
 
         return $this;
     }
