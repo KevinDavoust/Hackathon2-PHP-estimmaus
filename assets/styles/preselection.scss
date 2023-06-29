@@ -114,21 +114,21 @@
   z-index: 5;
 }
 
-.em-error-selection p {
-  font-size: 1.5em;
-}
-
 .em-save-ram {
   background-color: #9297be;
 }
 
-.em-save {
-  opacity: 0;
-  background-color: #9297be;
+.em-save-ram:hover {
+  background-color: #344fa9;
 }
 
-.em-save:hover, .em-save-ram:hover {
-  background-color: #344fa9;
+.em-save {
+  opacity: 0;
+  background-color: #f3e1a1;
+}
+
+.em-save:hover {
+  background-color: #f1d970;
 }
 
 .em-btn-retour {
