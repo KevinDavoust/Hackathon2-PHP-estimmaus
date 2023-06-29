@@ -2,10 +2,11 @@
 @import "_includes/variables.scss";
 @import "_includes/button.scss";
 @import "_includes/landing-page.scss";
+@import "infobulles_tuto.scss";
 
 body {
+  color: #000000;
   font-family: 'fira-sans', sans-serif;
-  color:#000000;
   background-color: $background;
   background-image: url("../images/logoC-opacity50.png");
   background-repeat: no-repeat;
