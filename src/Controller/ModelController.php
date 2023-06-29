@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/model')]
 class ModelController extends AbstractController
 {
-    #[Route('/', name: 'app_model_index', methods: ['GET'])]
+/*    #[Route('/', name: 'app_model_index', methods: ['GET'])]*/
     public function index(ModelRepository $modelRepository): Response
     {
         return $this->render('model/index.html.twig', [
@@ -21,7 +21,7 @@ class ModelController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_model_new', methods: ['GET', 'POST'])]
+/*    #[Route('/new', name: 'app_model_new', methods: ['GET', 'POST'])]*/
     public function new(Request $request, ModelRepository $modelRepository): Response
     {
         $model = new Model();
@@ -40,7 +40,7 @@ class ModelController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_model_show', methods: ['GET'])]
+/*    #[Route('/{id}', name: 'app_model_show', methods: ['GET'])]*/
     public function show(Model $model): Response
     {
         return $this->render('model/show.html.twig', [
@@ -48,7 +48,7 @@ class ModelController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_model_edit', methods: ['GET', 'POST'])]
+/*    #[Route('/{id}/edit', name: 'app_model_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, Model $model, ModelRepository $modelRepository): Response
     {
         $form = $this->createForm(ModelType::class, $model);
@@ -66,7 +66,7 @@ class ModelController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_model_delete', methods: ['POST'])]
+/*    #[Route('/{id}', name: 'app_model_delete', methods: ['POST'])]*/
     public function delete(Request $request, Model $model, ModelRepository $modelRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$model->getId(), $request->request->get('_token'))) {

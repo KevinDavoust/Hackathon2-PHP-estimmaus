@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $admin = new User();
         $admin->setEmail($faker->email());
         $admin->setPassword($this->hasher->hashPassword($admin, "password"));
-        $admin->setRoles(["ADMIN"]);
+        $admin->setRoles(["ROLE_ADMIN"]);
         $manager->persist($admin);
 
         $volunteerAmount = 3;
