@@ -11,9 +11,27 @@ class ContactFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add("subject", TextType::class)
-            ->add("origin", TextType::class)
-            ->add("body", TextType::class)
+            ->add("origin", TextType::class, [
+                "attr" => [
+                    "class" => 'ec-form ec-contact-form-small',
+                    "placeholder" => "Votre Adresse"
+                ],
+                "label" => false
+            ])
+            ->add("subject", TextType::class, [
+                "attr" => [
+                    "class" => 'ec-form ec-contact-form-small',
+                    "placeholder" => "Sujet"
+                ],
+                "label" => false
+            ])
+            ->add("body", TextType::class, [
+                "attr" => [
+                    "class" => 'ec-form ec-contact-form-big',
+                    "placeholder" => "Corps"
+                ],
+                "label" => false
+            ])
             ->setAction("/contact");
     }
 }

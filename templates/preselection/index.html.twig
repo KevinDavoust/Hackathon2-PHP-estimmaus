@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Préselection{% endblock %}
+
+{% block body %}
+<div class="em-form-container">
+
+<h1 class="mb-5">Je vérifie les critères</h1>
+
+    {% if app.request.get('_route') is same as('app_preselection_1') %}
+        {{ include('preselection/_form.html.twig') }}
+    {% endif %}
+
+    {% if app.request.get('_route') is same as('app_preselection_2') %}
+        {{ include('preselection/_ramAndStorageForm.html.twig') }}
+    {% endif %}
+
+</div>
+
+{% endblock %}

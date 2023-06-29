@@ -23,7 +23,32 @@ tour.addStep({
 });
 
 tour.addStep({
-    id: 'step2',
+        id: 'step2',
+        attachTo: {
+            element: '.es-sidebar-logo',
+            on: 'bottom',
+        },
+        canClickTarget: false,
+        title: 'Navigation',
+        text: 'Voici le logo du site. Il est très utile pour la navigation, car vous pouvez cliquer dessus pour revenir sur cette page.',
+        buttons: [
+            {
+                action() {
+                    return this.back();
+                },
+                classes: 'shepherd-button-secondary',
+                text: 'Retour arrière'
+            },
+            {
+                text: 'Suivant',
+                action: tour.next,
+            },
+        ],
+    }
+);
+
+tour.addStep({
+    id: 'step3',
     attachTo: {
         element: '.es-sidebar-estimation',
         on: 'bottom',
@@ -46,7 +71,7 @@ tour.addStep({
     ],
 });
 tour.addStep({
-        id: 'step3',
+        id: 'step4',
         attachTo: {
             element: '.es-sidebar-faq',
             on: 'bottom',
@@ -71,7 +96,7 @@ tour.addStep({
 );
 
 tour.addStep({
-        id: 'step4',
+        id: 'step5',
         attachTo: {
             element: '.es-sidebar-contact',
             on: 'bottom',
@@ -96,7 +121,7 @@ tour.addStep({
 );
 
 tour.addStep({
-        id: 'step5',
+        id: 'step6',
         attachTo: {
             element: '.es-sidebar-logout',
             on: 'top',
@@ -121,7 +146,7 @@ tour.addStep({
 );
 
 tour.addStep({
-        id: 'step6',
+        id: 'step7',
 
         title: 'En route !',
         text: 'Et voilà ! vous savez désormais comment utiliser cette aplication. Vous pouvez rejouer ce tutoriel à tout moment en cliquant sur le bouton associé dans l\'onglet de la Foire aux Questions. Bonne navigation !',

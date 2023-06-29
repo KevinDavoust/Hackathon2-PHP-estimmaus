@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Storage;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -26,8 +27,13 @@ class StorageCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             IntegerField::new('size', 'Quantité'),
-            IntegerField::new('indice', 'Indice'),
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addCssFile('admin/admin-user.css');
     }
 
 }

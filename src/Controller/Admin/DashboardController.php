@@ -10,6 +10,7 @@ use App\Entity\Smartphone;
 use App\Entity\State;
 use App\Entity\Storage;
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -42,8 +43,11 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Administration');
     }
 
+
+
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToUrl('Retour à l\'application', 'fas fa-home', '/accueil');
         yield MenuItem::section('Panneau d\'administration', 'fas fa-tools');
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([

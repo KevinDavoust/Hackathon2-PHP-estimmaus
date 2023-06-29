@@ -7,14 +7,13 @@ use App\Entity\Smartphone;
 use App\Form\BrandPictureType;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
-use App\Form\MemoryEstimateType;
-use App\Form\StorageEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
 use App\Service\ModelService;
 use App\Service\SessionEstimateService;
+use App\Service\StateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,8 +58,6 @@ class SmartphoneController extends AbstractController
     #[Route('/model', name: 'app_smartphone_model', methods: ['GET', 'POST'])]
     public function modelEstimate(SessionEstimateService $sessionEstimateService, Request $request, ModelService $modelService): Response
     {
-        $session = $request->getSession()->get('brandEstimate');
-        var_dump($session);
         $models = $modelService->getModelsByBrandId($request);
         $formModelEstimate = $this->createForm(ModelEstimateType::class, null, [
             'choices' => $models,
@@ -132,7 +129,7 @@ class SmartphoneController extends AbstractController
 
 
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
-    public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    public function stateEstimate(SessionEstimateService $sessionEstimateService, StateService $stateService, Request $request): Response
     {
         $session = $request->getSession()->get('storageEstimate');
         var_dump($session);
@@ -140,6 +137,8 @@ class SmartphoneController extends AbstractController
         $formStateEstimate->handleRequest($request);
 
         if ($formStateEstimate->isSubmitted() && $formStateEstimate->isValid()) {
+            //dd($formStateEstimate->getData()->getType());
+            //$stateType = $formStateEstimate->get('type')->getData()->getType();
             $stateType = $formStateEstimate->getData()->getType();
 
             $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
@@ -151,8 +150,11 @@ class SmartphoneController extends AbstractController
             );
         }
 
+        $states = $stateService->getStates();
+
         return $this->render('smartphone/state.html.twig', [
             'formStateEstimate' => $formStateEstimate->createView(),
+            'states' => $states,
         ]);
     }
 

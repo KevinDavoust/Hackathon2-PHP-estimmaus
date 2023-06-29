@@ -17,7 +17,7 @@ class ModelEstimateType extends AbstractType
                 'choices' => $options['choices'],
                 'choice_label' => 'name',
                 'label' => 'Modèle',
-                'placeholder' => 'Choisissez un modèle',
+                'placeholder' => 'Sélectionnez un modèle',
                 'required' => true,
                 'autocomplete' => true,
                 //'options_as_html' => true,

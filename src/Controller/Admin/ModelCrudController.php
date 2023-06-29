@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Model;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -29,9 +30,14 @@ class ModelCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             AssociationField::new('brand', 'Marque'),
             TextField::new('name', 'Nom'),
-            IntegerField::new('indice', 'Indice'),
             IntegerField::new('year', 'Année de sortie'),
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addCssFile('admin/admin-user.css');
     }
 
 }
