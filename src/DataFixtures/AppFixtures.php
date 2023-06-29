@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Indicator;
 use App\Entity\Memory;
 use App\Entity\Model;
 use App\Entity\Smartphone;
@@ -16,6 +17,53 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        $indicatorsData = [
+            "model" => [
+                "budget" => 1,
+                "flagship" => 2,
+                "premium" => 3,
+                "professionnal" => 4
+            ],
+            "year" => [
+                2017 => 1,
+                2019 => 2,
+                2021 => 3,
+                2023 => 4,
+            ],
+            "memory" => [
+                2 => 1,
+                8 => 2,
+                12 => 3,
+                16 => 4
+            ],
+            "storage" => [
+                16 => 1,
+                32 => 2,
+                64 => 3,
+                128 => 4
+            ],
+            "state" => [
+                "reparable" => 1,
+                "reconditionable" => 2,
+                "reconditionné" => 3,
+                "neuf" => 4
+            ]
+        ];
+
+        $indicators = [];
+        foreach ($indicatorsData as $characteristic => $details) {
+            foreach ($details as $classification => $value) {
+                $indicator = new Indicator();
+
+                $indicator->setCharacteristic($characteristic);
+                $indicator->setClassification($classification);
+                $indicator->setValue($value);
+
+                $manager->persist($indicator);
+                $indicators[] = $indicator;
+            }
+        }
+
         $brandNames =
             [
                 "Apple",
