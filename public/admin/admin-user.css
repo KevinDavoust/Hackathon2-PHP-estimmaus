@@ -46,9 +46,7 @@ td {
   color: black;
   font-size: 1.2em;
 }
-td:hover {
-  background-color: red;
-}
+
 a , .btn-label, .fa, .list-pagination-counter {
   color: black;
   font-size: 1em;
