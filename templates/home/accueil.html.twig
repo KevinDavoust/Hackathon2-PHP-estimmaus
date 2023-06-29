@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block body %}
+    <aside>
+        <nav class="d-flex flex-column es-sidebar align-items-center">
+            <img class="es-sidebar-logo mb-5 mt-4" src="{{ asset('build/images/estimmaus.png') }}" alt="logo Estimmaüs">
+
+                <i class="fa-solid fa-sack-dollar fa-3x mb-2"></i>
+                <a class="mb-5 es-sidebar-link" href="#">Faire une estimation</a>
+
+
+                <i class="fa-solid fa-circle-play fa-3x mb-2"></i>
+                <a class="mb-5 es-sidebar-link" href="#">Rejouer le tutoriel</a>
+
+
+                <i class="fa-solid fa-circle-question fa-3x mb-2"></i>
+                <a class="mb-5 es-sidebar-link" href="#">FAQ</a>
+
+
+                <i class="fa-solid fa-envelope fa-3x mb-2"></i>
+                <a class="mb-5 es-sidebar-link" href="#">Contact</a>
+
+                <i class="fa-solid fa-right-from-bracket fa-3x mb-2"></i>
+                <a class="mb-5 es-sidebar-link" href="#">Se déconnecter</a>
+        </nav>
+    </aside>
+    <i class="fa-solid fa-circle-dollar"></i>
+{% endblock %}
