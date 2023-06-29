@@ -1,6 +1,7 @@
 @import "~bootstrap";
 @import "_includes/variables.scss";
 @import "_includes/button.scss";
+@import "_includes/landing-page.scss";
 
 body {
   color: #000000;
@@ -8,8 +9,8 @@ body {
   background-color: $background;
   background-image: url("../images/logoC-opacity50.png");
   background-repeat: no-repeat;
-  background-position: 90% 10%;
-  background-size: 55%;
+  background-position: 90% 0;
+  background-size: 50%;
 }
 
 * {
