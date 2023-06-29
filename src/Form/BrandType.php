@@ -5,7 +5,6 @@ namespace App\Form;
 use App\Entity\Brand;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,7 +17,7 @@ class BrandType extends AbstractType
                 'class' => Brand::class,
                 'choice_label' => 'name',
                 'label' => 'Marque',
-                'placeholder' => 'Choisissez une marque',
+                'placeholder' => 'Sélectionnez une marque',
                 'required' => true,
                 'autocomplete' => true,
                 //'options_as_html' => true,

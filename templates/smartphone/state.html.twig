@@ -1,6 +1,26 @@
-{{ form_start(formStateEstimate) }}
-    {#{{ form_widget(formStateEstimate) }}#}
-    {{ form_row(formStateEstimate.type) }}
-    {#<input type="text" name="{{ field_name(formStateEstimate.type) }}">#}
-    <input type="submit" value="valider">
-{{ form_end(formStateEstimate) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<div class="ec-model card mx-auto ec-state">
+    <h1 class="ec-form-title">État du téléphone</h1>
+    {#<div class="ec-radios">#}
+    {{ form_start(formStateEstimate) }}
+        {% for state in states %}
+
+            <div class="ec-radio">
+                <input type="radio" id="radio{{loop.index }}" value="{{ state.type }}" name="{{ field_name(formStateEstimate.type) }}">
+                <label for="radio{{loop.index }}" class="ec-label-state">
+                    <h2>{{ state.type }}</h2>
+                    <p class="ec-state-description">{{ state.description }}</p>
+                </label>
+            </div>
+        {% endfor %}
+    {#</div>#}
+    <input type="submit" value="Valider" class="ec-button ec-button-state">
+    {{ form_end(formStateEstimate) }}
+</div>
+
+{% endblock %}

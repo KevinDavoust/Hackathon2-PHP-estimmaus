@@ -3,16 +3,15 @@
   flex-direction: column;
   border-width: 1px;
   border-style: solid;
-  border-color: #9095A0FF;
+  //border-color: #9095A0FF;
+  border-color: $light-blue;
   border-radius: 4px;
   margin-bottom: 48px;
 }
 
 .ec-form input {
-  border-color: $background;
-  border-radius: 4px;
-  background-color: $background;
-  padding: 4px;
+    border: none;
+    background-color: transparent;
 }
 
 .ec-form input::placeholder {

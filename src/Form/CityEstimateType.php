@@ -2,26 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Model;
+use App\Entity\City;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ModelEstimateType extends AbstractType
+class CityEstimateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', ChoiceType::class, [
-                'choices' => $options['choices'],
+            ->add('name', EntityType::class, [
+                'class' => City::class,
                 'choice_label' => 'name',
-                'label' => 'Modèle',
-                'placeholder' => 'Sélectionnez un modèle',
+                'label' => 'Ville',
+                'placeholder' => 'Sélectionnez une ville',
                 'required' => true,
                 'autocomplete' => true,
                 //'options_as_html' => true,
-                'no_results_found_text' => "<span>Désolé je ne connais pas ce modèle.</span>", // TODO : add link to contact form
+                'no_results_found_text' => "<span>Désolé cette ville ne fait pas partie de la liste.</span>", // TODO : add link to contact form
             ])
         ;
     }
@@ -29,8 +29,7 @@ class ModelEstimateType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Model::class,
-            'choices' => false,
+            'data_class' => City::class,
         ]);
     }
 }

@@ -29,6 +29,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "@popperjs/core": "^2.11.8"
+        "@popperjs/core": "^2.11.8",
+        "stimulus-password-visibility": "^2.1.1",
+        "bootstrap-icons": "^1.10.5"
     }
 }

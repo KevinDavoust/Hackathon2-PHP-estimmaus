@@ -17,18 +17,14 @@ class PreselectionType extends AbstractType
     {
         $builder
             ->add('accessories', CheckboxType::class, [
-                'label' => 'Les accessoires sont présents'])
+                'label' => 'Le chargeur et la batterie sont présents'])
             ->add('system', CheckboxType::class, [
-                'label' => 'IOS > 11 ou Android > 8'])
+                'label' => 'La version du système est supérieure à IOS 11 ou Android 8'])
             ->add('screen', CheckboxType::class, [
-                'label' => 'Ecran supérieur à 4 pouces'])
+                'label' => "L'écran fait plus de 4 pouces"])
             ->add('network', CheckboxType::class, [
-                'label' => 'Capte au moins la 4G'])
-            ->add('RAM' , NumberType::class, [
-                'label' => 'RAM (en Go)'])
-            ->add('storage', NumberType::class, [
-                'label' => 'Mémoire (en Go)'])
-            ->add('save', SubmitType::class, ['label' => 'Commencer l\'estimation'])
+                'label' => 'Le téléphone capte au moins la 4G'])
+            ->add('save', SubmitType::class, ['label' => 'Passer à l\'étape suivante'])
         ;
     }
 

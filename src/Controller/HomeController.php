@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\PreselectionType;
+use App\Form\RamAndStorageType;
 use App\Repository\SmartphoneRepository;
+use App\Service\SessionEstimateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,40 +19,55 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig');
     }
 
-
     #[Route('/faq', name: 'app_faq')]
     public function faq(): Response
     {
         return $this->render('home/faq.html.twig');
     }
 
-    #[Route('/preselection', name: 'app_preselection', methods: ['POST', 'GET'])]
-    public function preselection(Request $request, SmartphoneRepository $smartphoneRepository): Response
+    #[Route('/preselection', name: 'app_preselection_1', methods: ['POST', 'GET'])]
+    public function preselection(Request $request): Response
     {
         $form = $this->createForm(PreselectionType::class);
         $form->handleRequest($request);
-        $error = "";
+
+        if ($form->isSubmitted() && $form->isValid()) {
+                return $this->redirectToRoute('app_preselection_2', [], Response::HTTP_SEE_OTHER);
+            }
+
+        return $this->renderForm('preselection/index.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/preselection/etape2', name: 'app_preselection_2', methods: ['POST', 'GET'])]
+    public function preselectionSuite(SessionEstimateService $sessionEstimateService, Request $request): Response
+    {
+        $form = $this->createForm(RamAndStorageType::class);
+        $form->handleRequest($request);
+        $errorRam = $errorStorage = "";
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ram = $form->get('RAM')->getData();
             $storage = $form->get('storage')->getData();
             if ( $ram >= 2 && $storage >= 16) {
-                $sessionEstimate = $request->getSession();
-                $sessionEstimate->set('ramEstimate', $ram);
-                $sessionEstimate->set('storageEstimate', $storage);
+                $sessionEstimateService->addToEstimateSession('memoryEstimate', 'memory', 'size', $ram, $request);
+                $sessionEstimateService->addToEstimateSession('storageEstimate', 'storage', 'size', $storage, $request);
+                return $this->redirectToRoute('app_smartphone_city', [], Response::HTTP_SEE_OTHER);
             } else {
                 if ($ram < 2) {
-                    $error = 'RAM insuffisante';
+                    $errorRam = 'RAM insuffisante';
                 }
                 if ($storage < 16) {
-                    $error = 'Mémoire insuffisante';
+                    $errorStorage = 'Mémoire insuffisante';
                 }
             }
         }
 
         return $this->renderForm('preselection/index.html.twig', [
             'form' => $form,
-            'error' => $error,
+            'errorRam' => $errorRam,
+            'errorStorage' => $errorStorage,
         ]);
     }
 

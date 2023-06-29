@@ -14,16 +14,28 @@
 }
 
 .ec-button {
-    width: 140px;
-    height: 36px;
-    background: $light-blue;
-    color: white;
-    font-size: 14px;
-    border-radius: 38px;
-    box-shadow: $box-shadow;
-    border: none;
+  //width: 140px;
+  //height: 36px;
+  background: $light-blue;
+  color: white;
+  font-size: 14px;
+  border-radius: 38px;
+  box-shadow: $box-shadow;
+  border: none;
+  padding: 3%;
 }
 
 .ec-button:hover {
     background: $dark-blue;
+    transition: 0.2s;
+}
+
+.ec-password {
+  position: relative;
+}
+
+.ec-password button {
+  position: absolute;
+  right: -1rem;
+  top: calc(50% - 1.2rem);
 }

@@ -1,1 +1,5 @@
 
+error_404:
+    path: /error404
+    controller: App\Controller\ErrorController::showException
+
