@@ -1,0 +1,29 @@
+.ec-button-start {
+  width: 253px;
+  height: 75px;
+  background: $light-blue;
+  color: white;
+  font-size: 32px;
+  border-radius: 38px;
+  box-shadow: $box-shadow;
+  border: none;
+}
+
+.ec-button-start:hover {
+  background: $dark-blue;
+}
+
+.ec-button {
+    width: 140px;
+    height: 36px;
+    background: $light-blue;
+    color: white;
+    font-size: 14px;
+    border-radius: 38px;
+    box-shadow: $box-shadow;
+    border: none;
+}
+
+.ec-button:hover {
+    background: $dark-blue;
+}
