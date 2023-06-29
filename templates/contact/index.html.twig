@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Contactez-Nous!
+{% endblock %}
+
+{% block body %}
+
+	{# {% if app.flashes is defined %} #}
+	{% for flash in app.flashes %}
+
+		{{flash.0}}
+	{% endfor %}
+	{# {% endif %} #}
+
+	{{ form_start(contactForm) }}
+	{{form_widget(contactForm)}}
+	<button type="submit">Submit</button>
+	{{ form_end(contactForm) }}
+{% endblock %}
