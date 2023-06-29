@@ -1,17 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for brand in brands %}
+    {#{% for brand in brands %}
         <div class="brand">
             <img src="{{ asset('images/brands/' ~ brand.picturePath) }}" alt="{{ brand.name }}">
             <p>{{ brand.name }}</p>
         </div>
-    {% endfor %}
+    {% endfor %}#}
 
     {{ form_start(formBrandEstimate) }}
-        {#{{ form_widget(formBrandEstimate) }}#}
+        {{ form_widget(formBrandEstimate) }}
         {#{{ form_row(formBrandEstimate.name) }}#}
-        <input type="text" name="{{ field_name(formBrandEstimate.name) }}">
+        {#<select name="{{ field_name(formBrandEstimate.name) }}">
+        </select>#}
         <input type="submit" value="valider" class="btn">
     {{ form_end(formBrandEstimate) }}
 {% endblock %}
