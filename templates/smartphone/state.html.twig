@@ -3,25 +3,24 @@
 {% block body %}
 
 {{ form_start(formStateEstimate) }}
-    {#{{ form_widget(formStateEstimate) }}#}
-<div class="em-form-container">
+
+<div class="em-form-container-state">
+    <h1 class="ec-form-title">État du téléphone</h1>
     <div class="ec-radios">
-        {#{{ form_row(formStateEstimate.type) }}#}
+
         {% for state in states %}
-            {#{{ form_row(formStateEstimate.type) }}#}
+
             <div class="ec-radio">
-                <input type="radio" id="radio{{loop.index }}" value="{{ loop.index }}" name="{{ field_name(formStateEstimate.type) }}">
+                <input type="radio" id="radio{{loop.index }}" value="{{ state.type }}" name="{{ field_name(formStateEstimate.type) }}">
                 <label for="radio{{loop.index }}">
                     <h2>{{ state.type }}</h2>
-                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, consequatur distinctio eaque enim eos error iure necessitatibus neque nostrum numquam perferendis praesentium quam quod rem rerum tempora unde, velit voluptatem.</span></p>
+                    <p class="ec-state-description">{{ state.description }}</p>
                 </label>
             </div>
         {% endfor %}
     </div>
-    <input type="submit" value="valider" class="ec-button">
+    <input type="submit" value="valider" class="ec-button ec-button-state">
     {{ form_end(formStateEstimate) }}
 </div>
-    {#<input type="text" name="{{ field_name(formStateEstimate.type) }}">#}
-
 
 {% endblock %}
