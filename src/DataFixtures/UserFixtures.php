@@ -22,17 +22,19 @@ class UserFixtures extends Fixture
         $faker = Factory::create();
 
         $admin = new User();
-        $admin->setEmail($faker->email());
+        $admin->setEmail('admin@estimmaus.com');
         $admin->setPassword($this->hasher->hashPassword($admin, "password"));
         $admin->setRoles(["ROLE_ADMIN"]);
+        $admin->setCity($this->getReference("city_8"));
         $manager->persist($admin);
 
         $volunteerAmount = 3;
         for ($i = 0; $i < $volunteerAmount; $i++)
         {
             $volunteer = new User();
-            $volunteer->setEmail($faker->email());
+            $volunteer->setEmail('volunteer' . $i . '@estimmaus.com');
             $volunteer->setPassword($this->hasher->hashPassword($volunteer, "password"));
+            $volunteer->setCity($this->getReference("city_" . $i));
             $manager->persist($volunteer);
         }
 

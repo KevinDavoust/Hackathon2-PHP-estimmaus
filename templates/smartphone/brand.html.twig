@@ -1,35 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(formBrandEstimate) }}
-    {#{{ form_widget(formBrandEstimate) }}#}
-    {{ form_row(formBrandEstimate.name) }}
-    {#{{ form_row(formBrandEstimate.picturePath) }}#}
-    <input type="submit" value="valider" class="btn">
-    {#<div style="display: flex; flex-direction: column;">
-    {% for brand in brands %}
-        <input type="image" src="{{ asset('images/brands/' ~ brand.picturePath) }}" name="{{ field_name(formBrandEstimate.picturePath) }}" value="{{ brand.name }}">
-    {% endfor %}
-    </div>#}
-
-
-    {{ form_end(formBrandEstimate) }}
-    {#{% for brand in brands %}
-        {% if brand.name == formBrandEstimate.name.vars.value %}
-            {{ brand.name }}
-            {{ brand.picturePath }}
-            #}{#<img src="{{ brand.picturePath }}" alt="{{ brand.name }}">#}{#
-        {% endif %}
-    {% endfor %}#}
-
-    {#<form>
-        <div style="display: flex; flex-direction: column;">
-            {% for brand in brands %}
-                <input type="image" src="{{ asset('images/brands/' ~ brand.picturePath) }}" name="{{ field_name(formBrandEstimate.name) }}" value="{{ brand.name }}">
-                #}{#<label for="radio ~ {{ loop.index }}"><img src="{{ asset('images/brands/' ~ brand.picturePath) }}" alt="{{ brand.name }}"></label>#}{#
-            {% endfor %}
+    <div class="ec-model card mx-auto">
+        <div class="col-8 m-auto">
+            <h1 class="py-5">Quelle est la marque du téléphone ?</h1>
+            {{ form_start(formBrandEstimate) }}
+            <div class="">
+                {#{{ form_widget(formModelEstimate) }}#}
+                {{ form_widget(formBrandEstimate.name) }}
+            </div>
+            <div class="text-center p-5">
+                <input class="ec-button" type="submit" value="valider">
+            </div>
+            {{ form_end(formBrandEstimate) }}
         </div>
-        #}{#<input type="submit" value="valider2">#}{#
-    </form>#}
 
+        <p class="text-center">Si la marque n'est pas présente dans la liste, merci de <a href="{{ path('app_contact') }}">contacter l'administrateur</a>.</p>
+    </div>
 {% endblock %}
+{#  #}

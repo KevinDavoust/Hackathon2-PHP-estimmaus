@@ -31,6 +31,9 @@ class Smartphone
     #[ORM\Column(nullable: true)]
     private ?float $totalIndice = null;
 
+    #[ORM\ManyToOne(inversedBy: 'smartphones')]
+    private ?City $city = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +107,18 @@ class Smartphone
     public function setTotalIndice(?float $totalIndice): static
     {
         $this->totalIndice = $totalIndice;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): static
+    {
+        $this->city = $city;
 
         return $this;
     }

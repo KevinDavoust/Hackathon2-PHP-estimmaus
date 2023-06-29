@@ -13,6 +13,7 @@ use App\Repository\SmartphoneRepository;
 use App\Service\BrandService;
 use App\Service\ModelService;
 use App\Service\SessionEstimateService;
+use App\Service\StateService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -76,15 +77,12 @@ class SmartphoneController extends AbstractController
             $modelName = $formModelEstimate->getData()->getName();
 
             $sessionEstimateService->addToEstimateSession('modelEstimate', 'model', 'name', $modelName, $request);
-
             return $this->redirectToRoute(
                 'app_smartphone_state',
                 [],
                 Response::HTTP_SEE_OTHER
             );
         }
-
-
 
         return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
@@ -143,16 +141,16 @@ class SmartphoneController extends AbstractController
 
 
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
-    public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    public function stateEstimate(SessionEstimateService $sessionEstimateService, StateService $stateService, Request $request): Response
     {
-        $session = $request->getSession()->get('storageEstimate');
-        var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);
 
-        if ($formStateEstimate->isSubmitted() && $formStateEstimate->isValid()) {
-            $stateType = $formStateEstimate->getData()->getType();
-
+        if ($formStateEstimate->isSubmitted()) {
+            //dd($formStateEstimate->getData()->getType());
+            //$stateType = $formStateEstimate->get('type')->getData()->getType();
+            //dd($formStateEstimate->get('type')->getViewData());
+            $stateType = $formStateEstimate->get('type')->getViewData();
             $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
 
             return $this->redirectToRoute(
@@ -162,8 +160,11 @@ class SmartphoneController extends AbstractController
             );
         }
 
+        $states = $stateService->getStates();
+
         return $this->render('smartphone/state.html.twig', [
             'formStateEstimate' => $formStateEstimate->createView(),
+            'states' => $states,
         ]);
     }
 
