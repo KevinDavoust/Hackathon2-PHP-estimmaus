@@ -1,0 +1,36 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="col">
+    <div class="col em-accessories">
+        <div class="form-check form-switch">
+        {{ form_row(form.accessories, {'attr': {'role': 'switch'}}) }}
+    </div>
+        <div class="em-btnAccessories">Suivant</div>
+    </div>
+    <div class="col em-system">
+        <div class="form-check form-switch">
+        {{ form_row(form.system, {'attr': {'role': 'switch'}}) }}
+    </div>
+        <div class="em-btnSystem">Suivant</div>
+    </div>
+    <div class="col em-screen">
+        <div class="form-check form-switch">
+        {{ form_row(form.screen, {'attr': {'role': 'switch'}}) }}
+    </div>
+        <div class="em-btnScreen">Suivant</div>
+    </div>
+    <div class="col em-network">
+        <div class="form-check form-switch">
+        {{ form_row(form.network, {'attr': {'role': 'switch'}}) }}
+    </div>
+        <div class="em-btnNetwork">Suivant</div>
+    </div>
+    <div class="col em-ram">
+        {{ form_row(form.RAM) }}
+        {{ form_row(form.storage) }}
+        {{ form_row(form._token) }}
+    </div>
+<button class="btn em-save-btn">{{ form_row(form.save) }}</button>
+</div>
+{{ form_end(form, {'render_rest': false}) }}

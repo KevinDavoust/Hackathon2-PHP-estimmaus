@@ -7,8 +7,6 @@ use App\Entity\Smartphone;
 use App\Form\BrandPictureType;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
-use App\Form\MemoryEstimateType;
-use App\Form\StorageEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
@@ -24,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/smartphone')]
 class SmartphoneController extends AbstractController
 {
-/*    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]*/
+    /*    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]*/
     public function index(SmartphoneRepository $smartphoneRepository): Response
     {
         return $this->render('smartphone/index.html.twig', [
@@ -69,8 +67,6 @@ class SmartphoneController extends AbstractController
     #[Route('/model', name: 'app_smartphone_model', methods: ['GET', 'POST'])]
     public function modelEstimate(SessionEstimateService $sessionEstimateService, Request $request, ModelService $modelService): Response
     {
-        $session = $request->getSession()->get('brandEstimate');
-        var_dump($session);
         $models = $modelService->getModelsByBrandId($request);
         $formModelEstimate = $this->createForm(ModelEstimateType::class, null, [
             'choices' => $models,
@@ -83,66 +79,68 @@ class SmartphoneController extends AbstractController
             $sessionEstimateService->addToEstimateSession('modelEstimate', 'model', 'name', $modelName, $request);
 
             return $this->redirectToRoute(
-                'app_smartphone_memory',
-                [],
-                Response::HTTP_SEE_OTHER
-            );
-        }
-
-        return $this->render('smartphone/model.html.twig', [
-            'formModelEstimate' => $formModelEstimate->createView(),
-        ]);
-    }
-
-    #[Route('/memory', name: 'app_smartphone_memory', methods: ['GET', 'POST'])]
-    public function memoryEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
-    {
-        $session = $request->getSession()->get('modelEstimate');
-        var_dump($session);
-        $formMemoryEstimate = $this->createForm(MemoryEstimateType::class);
-        $formMemoryEstimate->handleRequest($request);
-
-        if ($formMemoryEstimate->isSubmitted() && $formMemoryEstimate->isValid()) {
-            $memorySize = $formMemoryEstimate->getData()->getSize();
-
-            $sessionEstimateService->addToEstimateSession("memoryEstimate", "memory", "size", $memorySize, $request);
-
-            return $this->redirectToRoute(
-                'app_smartphone_storage',
-                [],
-                Response::HTTP_SEE_OTHER
-            );
-        }
-
-        return $this->render('smartphone/memory.html.twig', [
-            "formMemoryEstimate" => $formMemoryEstimate
-        ]);
-    }
-
-    #[Route('/storage', name: 'app_smartphone_storage', methods: ['GET', 'POST'])]
-    public function storageEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
-    {
-        $session = $request->getSession()->get('memoryEstimate');
-        var_dump($session);
-        $formStorageEstimate = $this->createForm(StorageEstimateType::class);
-        $formStorageEstimate->handleRequest($request);
-
-        if ($formStorageEstimate->isSubmitted() && $formStorageEstimate->isValid()) {
-            $storageSize = $formStorageEstimate->getData()->getSize();
-
-            $sessionEstimateService->addToEstimateSession("storageEstimate", "memory", "size", $storageSize, $request);
-
-            return $this->redirectToRoute(
                 'app_smartphone_state',
                 [],
                 Response::HTTP_SEE_OTHER
             );
         }
 
-        return $this->render('smartphone/storage.html.twig', [
-            "formStorageEstimate" => $formStorageEstimate
+
+
+        return $this->render('smartphone/model.html.twig', [
+            'formModelEstimate' => $formModelEstimate->createView(),
         ]);
     }
+
+    // #[Route('/memory', name: 'app_smartphone_memory', methods: ['GET', 'POST'])]
+    // public function memoryEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    // {
+    //     $session = $request->getSession()->get('modelEstimate');
+    //     var_dump($session);
+    //     $formMemoryEstimate = $this->createForm(MemoryEstimateType::class);
+    //     $formMemoryEstimate->handleRequest($request);
+
+    //     if ($formMemoryEstimate->isSubmitted() && $formMemoryEstimate->isValid()) {
+    //         $memorySize = $formMemoryEstimate->getData()->getSize();
+
+    //         $sessionEstimateService->addToEstimateSession("memoryEstimate", "memory", "size", $memorySize, $request);
+
+    //         return $this->redirectToRoute(
+    //             'app_smartphone_storage',
+    //             [],
+    //             Response::HTTP_SEE_OTHER
+    //         );
+    //     }
+
+    //     return $this->render('smartphone/memory.html.twig', [
+    //         "formMemoryEstimate" => $formMemoryEstimate
+    //     ]);
+    // }
+
+    // #[Route('/storage', name: 'app_smartphone_storage', methods: ['GET', 'POST'])]
+    // public function storageEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    // {
+    //     $session = $request->getSession()->get('memoryEstimate');
+    //     var_dump($session);
+    //     $formStorageEstimate = $this->createForm(StorageEstimateType::class);
+    //     $formStorageEstimate->handleRequest($request);
+
+    //     if ($formStorageEstimate->isSubmitted() && $formStorageEstimate->isValid()) {
+    //         $storageSize = $formStorageEstimate->getData()->getSize();
+
+    //         $sessionEstimateService->addToEstimateSession("storageEstimate", "memory", "size", $storageSize, $request);
+
+    //         return $this->redirectToRoute(
+    //             'app_smartphone_state',
+    //             [],
+    //             Response::HTTP_SEE_OTHER
+    //         );
+    //     }
+
+    //     return $this->render('smartphone/storage.html.twig', [
+    //         "formStorageEstimate" => $formStorageEstimate
+    //     ]);
+    // }
 
 
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
@@ -161,7 +159,7 @@ class SmartphoneController extends AbstractController
             $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
 
             return $this->redirectToRoute(
-                'app_smartphone_result',
+                'app_estimation',
                 [],
                 Response::HTTP_SEE_OTHER
             );
@@ -175,27 +173,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-    #[Route('/result', name: 'app_smartphone_result', methods: ['GET', 'POST'])]
-    public function resultEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
-    {
-        $session = $request->getSession()->get('stateEstimate');
-        var_dump($session);
-        $brand = $sessionEstimateService->getFromEstimateSession('brandEstimate', $request);
-        $model = $sessionEstimateService->getFromEstimateSession('modelEstimate', $request);
-        $state = $sessionEstimateService->getFromEstimateSession('stateEstimate', $request);
-        $memory = $sessionEstimateService->getFromEstimateSession('memoryEstimate', $request);
-        $storage = $sessionEstimateService->getFromEstimateSession('storageEstimate', $request);
-
-        return $this->render('smartphone/result.html.twig', [
-            'brand' => $brand,
-            'model' => $model,
-            'state' => $state,
-            'memory' => $memory,
-            'storage' => $storage
-        ]);
-    }
-
-/*    #[Route('/new', name: 'app_smartphone_new', methods: ['GET', 'POST'])]*/
+    #[Route('/new', name: 'app_smartphone_new', methods: ['GET', 'POST'])]
     public function new(Request $request, SmartphoneRepository $smartphoneRepository): Response
     {
         $smartphone = new Smartphone();
@@ -214,7 +192,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-/*    #[Route('/{id}', name: 'app_smartphone_show', methods: ['GET'])]*/
+    /*    #[Route('/{id}', name: 'app_smartphone_show', methods: ['GET'])]*/
     public function show(Smartphone $smartphone): Response
     {
         return $this->render('smartphone/show.html.twig', [
@@ -222,7 +200,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-/*    #[Route('/{id}/edit', name: 'app_smartphone_edit', methods: ['GET', 'POST'])]*/
+    /*    #[Route('/{id}/edit', name: 'app_smartphone_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, Smartphone $smartphone, SmartphoneRepository $smartphoneRepository): Response
     {
         $form = $this->createForm(SmartphoneType::class, $smartphone);
@@ -240,7 +218,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-/*    #[Route('/{id}', name: 'app_smartphone_delete', methods: ['POST'])]*/
+    /*    #[Route('/{id}', name: 'app_smartphone_delete', methods: ['POST'])]*/
     public function delete(Request $request, Smartphone $smartphone, SmartphoneRepository $smartphoneRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $smartphone->getId(), $request->request->get('_token'))) {

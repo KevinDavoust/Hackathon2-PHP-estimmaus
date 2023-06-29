@@ -18,7 +18,6 @@ class Memory
     #[ORM\Column(nullable: true)]
     private ?int $size = null;
 
-
     #[ORM\OneToMany(mappedBy: 'memory', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
