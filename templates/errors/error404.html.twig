@@ -1,10 +1,14 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}
-Page introuvable
-{% endblock %}
-
-{% block body %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page introuvable</title>
+    {{ encore_entry_link_tags('app') }}
+</head>
+<body>
 <div class="container d-flex align-items-center es-error-404">
     <div class="row">
         <div class="col-md-12">
@@ -13,4 +17,13 @@ Page introuvable
             <p class="es-error-404-text">Cliquez <a href="/accueil">ici</a> pour revenir à l'accueil.</p>
         </div>
     </div>
-{% endblock %}
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
