@@ -52,7 +52,6 @@ tour.addStep({
             on: 'bottom',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 10,
         title: 'Foire aux questions',
         text: 'Cet onglet vous envoie vers les questions fréquemment posées, vous y trouverez certainement vos réponses !',
         buttons: [
@@ -78,7 +77,6 @@ tour.addStep({
             on: 'bottom',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 30,
         title: 'Contact',
         text: 'Cet onglet vous envoie vers la page pour contacter un administrateur, si vous avez des questions ou des suggestions.',
         buttons: [
@@ -104,7 +102,6 @@ tour.addStep({
             on: 'top',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 10,
         title: 'Se déconnecter',
         text: 'Ce bouton sert à vous déconnecter de l\'application, cliquez dessus quand vous avez fini de vous en servir.',
         buttons: [
@@ -138,16 +135,37 @@ tour.addStep({
             },
             {
                 text: 'Fermer',
-                action: tour.next,
+                action() {
+                    dismissTour();
+                    return this.hide();
+                }
             },
         ],
     }
 );
 
+function dismissTour() {
+    if (!localStorage.getItem('shepherd-tour')) {
+        localStorage.setItem('shepherd-tour', 'yes');
+    }
+}
 
-// Démarrez le tutoriel
-if (window.location.pathname === '/accueil') {
-    // Votre code JavaScript spécifique à la page "page.html.twig" ici
+// Dismiss the tour when the cancel icon is clicked. Do not show the tour on next page reload
+tour.on('cancel', dismissTour);
+
+// Initiate the tour
+if (!localStorage.getItem('shepherd-tour') && window.location.pathname === '/accueil') {
     tour.start();
+}
+
+// Sélectionnez le bouton "reset" à l'aide de son ID
+const resetButton = document.getElementById('reset-tour-button');
+
+// Ajoutez un gestionnaire d'événements pour le clic sur le bouton "reset"
+resetButton.addEventListener('click', resetTour);
+
+// Fonction pour réinitialiser le localStorage
+function resetTour() {
+    localStorage.removeItem('shepherd-tour');
 }
 
