@@ -1,24 +1,24 @@
 <aside>
-    <nav class="d-flex flex-column es-sidebar align-items-center">
+    <nav class="d-flex flex-column es-sidebar align-items-center justify-content-around">
         <a href="/accueil" class="d-flex flex-column align-items-center es-sidebar-logo"><img class="es-sidebar-logo mb-5 mt-4" src="{{ asset('build/images/estimmaus.png') }}" alt="logo Estimmaüs"></a>
 
         <div class="es-sidebar-estimation d-flex flex-column align-items-center w-100">
-            <i class="fa-solid fa-sack-dollar fa-3x mb-2"></i>
+            <a class="text-decoration-none" style="color: black" href="/preselection"><i class="fa-solid fa-sack-dollar fa-3x mb-2"></i></a>
             <a class="mb-5 es-sidebar-link" href="/preselection">Faire une estimation</a>
         </div>
 
         <div class="es-sidebar-faq d-flex flex-column align-items-center w-100">
-            <i class="fa-solid fa-circle-question fa-3x mb-2"></i>
+            <a class="text-decoration-none" style="color: black" href="/faq"><i class="fa-solid fa-circle-question fa-3x mb-2"></i></a>
             <a class="mb-5 es-sidebar-link" href="/faq">FAQ / tutoriel</a>
         </div>
 
         <div class="es-sidebar-contact d-flex flex-column align-items-center w-100">
-            <i class="fa-solid fa-envelope fa-3x mb-2"></i>
-            <a class="es-sidebar-link es-sidebar-contact" href="/contact">Contact</a>
+            <a class="text-decoration-none" style="color: black" href="/contact"><i class="fa-solid fa-envelope fa-3x mb-2"></i></a>
+            <a class=" mb-5 es-sidebar-link es-sidebar-contact" href="/contact">Contact</a>
         </div>
 
         <div class="es-sidebar-logout d-flex flex-column align-items-center w-100">
-            <i class="fa-solid fa-right-from-bracket fa-3x mb-2"></i>
+            <a class="text-decoration-none" style="color: black" href="/logout" ><i class="fa-solid fa-right-from-bracket fa-3x mb-2"></i></a>
             <a class="mb-5 es-sidebar-link " href="/logout">Se déconnecter</a>
         </div>
     </nav>

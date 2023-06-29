@@ -35,6 +35,9 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/contact, roles: ROLE_USER }
+        - { path: ^/estimation, roles: ROLE_USER }
+        - { path: ^/faq, roles: ROLE_USER }
+        - { path: ^/preselection, roles: ROLE_USER }
         - { path: ^/accueil, roles: ROLE_USER }
         - { path: ^/register, roles: ROLE_ADMIN }
         - { path: ^/verify/email, roles: ROLE_USER }
