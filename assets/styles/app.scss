@@ -9,6 +9,7 @@
 @import "_includes/sidebar.scss";
 @import "_includes/state.scss";
 @import "_includes/error404.scss";
+@import "_includes/model.scss";
 
 body {
   color: #000000;
@@ -28,4 +29,8 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+a {
+  color: $red;
 }
