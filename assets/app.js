@@ -58,3 +58,6 @@ function emAppear(element) {
     console.log('appear')
     element.style.display = 'unset';
 }*/
+
+import './script/tutoriel.js';
+

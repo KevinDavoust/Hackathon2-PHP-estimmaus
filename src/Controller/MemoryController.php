@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/memory')]
 class MemoryController extends AbstractController
 {
-    #[Route('/', name: 'app_memory_index', methods: ['GET'])]
+/*    #[Route('/', name: 'app_memory_index', methods: ['GET'])]*/
     public function index(MemoryRepository $memoryRepository): Response
     {
         return $this->render('memory/index.html.twig', [
@@ -21,7 +21,7 @@ class MemoryController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_memory_new', methods: ['GET', 'POST'])]
+/*    #[Route('/new', name: 'app_memory_new', methods: ['GET', 'POST'])]*/
     public function new(Request $request, MemoryRepository $memoryRepository): Response
     {
         $memory = new Memory();
@@ -40,7 +40,7 @@ class MemoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_memory_show', methods: ['GET'])]
+/*    #[Route('/{id}', name: 'app_memory_show', methods: ['GET'])]*/
     public function show(Memory $memory): Response
     {
         return $this->render('memory/show.html.twig', [
@@ -48,7 +48,7 @@ class MemoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_memory_edit', methods: ['GET', 'POST'])]
+/*    #[Route('/{id}/edit', name: 'app_memory_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, Memory $memory, MemoryRepository $memoryRepository): Response
     {
         $form = $this->createForm(MemoryType::class, $memory);
@@ -66,7 +66,7 @@ class MemoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_memory_delete', methods: ['POST'])]
+/*    #[Route('/{id}', name: 'app_memory_delete', methods: ['POST'])]*/
     public function delete(Request $request, Memory $memory, MemoryRepository $memoryRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$memory->getId(), $request->request->get('_token'))) {
