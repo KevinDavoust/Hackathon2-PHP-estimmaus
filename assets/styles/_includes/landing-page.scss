@@ -4,8 +4,46 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
+
 }
 
 .ec-landing-page img {
   width: 550px;
+}
+
+.hidden {
+  display: none;
+}
+
+.swip-img {
+  animation-duration: 5s;
+  animation-name: glissement-button;
+  animation-direction: normal;
+}
+
+@keyframes glissement-button {
+  from {
+    margin-top: 0%;
+  }
+
+  to {
+    margin-top: -65%;
+  }
+}
+
+.swip-login {
+  animation-duration: 5s;
+  animation-name: glissement-login;
+  animation-direction: normal;
+}
+
+@keyframes glissement-login {
+  from {
+    margin-top: -10%;
+  }
+
+  to {
+    margin-top: -25%;
+  }
 }
