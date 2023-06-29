@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Graphiques</title>
+    {{ encore_entry_script_tags('app') }}
+    <style>
+        @font-face {
+            font-family: 'fira-sans';
+            src: url({{ asset('build/fonts/FiraSans-Medium.ttf') }});
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body style="background-color: #BCD9ED">
+<div style="padding: 20px;">
+<i class="fas fa-tools"></i>
+<a href="/admin" style="text-decoration: underline; color: black; font-size: 1.2rem; font-weight: bold;">Retour au panneau d'administration</a>
+</div>
+
+<h2 style="text-align: center; font-size: 2rem; font-weight: bold; font-family: 'fira-sans', serif">Nombre de téléphones dans chaque centre</h2>
+
+<div style="height: 300px; background-color:#F2F2F2; margin-bottom: 100px;" >
+{{ render_chart(chart) }}
+</div>
+
+<h2 style="text-align: center; font-size: 2rem; font-weight: bold; font-family: 'fira-sans', serif">Nombre de bénévoles enregistrés</h2>
+
+<div style="height: 300px; background-color:#F2F2F2">
+    {{ render_chart(chart2) }}
+</div>
+
+    <script src="https://kit.fontawesome.com/418bab4033.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+
