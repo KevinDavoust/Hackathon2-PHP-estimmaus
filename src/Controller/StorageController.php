@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/storage')]
 class StorageController extends AbstractController
 {
-    #[Route('/', name: 'app_storage_index', methods: ['GET'])]
+/*    #[Route('/', name: 'app_storage_index', methods: ['GET'])]*/
     public function index(StorageRepository $storageRepository): Response
     {
         return $this->render('storage/index.html.twig', [
@@ -21,7 +21,7 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_storage_new', methods: ['GET', 'POST'])]
+/*    #[Route('/new', name: 'app_storage_new', methods: ['GET', 'POST'])]*/
     public function new(Request $request, StorageRepository $storageRepository): Response
     {
         $storage = new Storage();
@@ -40,7 +40,7 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_storage_show', methods: ['GET'])]
+/*    #[Route('/{id}', name: 'app_storage_show', methods: ['GET'])]*/
     public function show(Storage $storage): Response
     {
         return $this->render('storage/show.html.twig', [
@@ -48,7 +48,7 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_storage_edit', methods: ['GET', 'POST'])]
+/*    #[Route('/{id}/edit', name: 'app_storage_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, Storage $storage, StorageRepository $storageRepository): Response
     {
         $form = $this->createForm(StorageType::class, $storage);
@@ -66,7 +66,7 @@ class StorageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_storage_delete', methods: ['POST'])]
+/*    #[Route('/{id}', name: 'app_storage_delete', methods: ['POST'])]*/
     public function delete(Request $request, Storage $storage, StorageRepository $storageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$storage->getId(), $request->request->get('_token'))) {

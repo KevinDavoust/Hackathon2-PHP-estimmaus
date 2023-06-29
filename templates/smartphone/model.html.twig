@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{ form_start(formModelEstimate) }}
+    {#{{ form_widget(formModelEstimate) }}#}
+    {{ form_row(formModelEstimate.name) }}
+    <input type="submit" value="valider">
+{{ form_end(formModelEstimate) }}
+{% endblock %}
