@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Smartphone;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -33,7 +34,14 @@ class SmartphoneCrudController extends AbstractCrudController
             AssociationField::new('state', 'État'),
             AssociationField::new('category', 'Catégorie')->hideOnForm(),
             IntegerField::new('totalIndice', 'Indice total')->hideOnForm(),
+            AssociationField::new('city', 'Ville'),
         ];
+    }
+
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
+            ->addCssFile('admin/admin-user.css');
     }
 
 }
