@@ -1,0 +1,87 @@
+.form-check-input:checked {
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+}
+
+.form-check-input {
+  background-color: #f44336;
+  border-color: #f44336;
+}
+
+.em-form-container {
+  width: 30vw;
+  height: 100vh;
+  padding: 3%;
+  background-color: blue;
+  position: absolute;
+  right: 25%;
+  top: 20%;
+}
+
+.form-check {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+}
+
+.form-switch {
+  padding-left: 0;
+}
+
+.form-switch .form-check-input {
+  margin-left: 0;
+  height: 2em;
+  width: 4em;
+}
+
+.em-btnAccessories, .em-btnNetwork, .em-btnScreen, .em-btnRam, .em-btnStorage, .em-btnSystem, {
+  width: 6em;
+  height: 2em;
+  background-color: #1abc9c;
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-padding-y: 0.375rem;
+  --bs-btn-font-family: ;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 400;
+  --bs-btn-line-height: 1.5;
+  --bs-btn-color: var(--bs-body-color);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-width: var(--bs-border-width);
+  --bs-btn-border-color: transparent;
+  --bs-btn-border-radius: var(--bs-border-radius);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+  --bs-btn-disabled-opacity: 0.65;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+  display: inline-block;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  font-family: var(--bs-btn-font-family);
+  font-size: var(--bs-btn-font-size);
+  font-weight: var(--bs-btn-font-weight);
+  line-height: var(--bs-btn-line-height);
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border-radius: var(--bs-btn-border-radius);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.em-btnAccessories:hover, .em-btnNetwork:hover, .em-btnScreen:hover, .em-btnRam:hover, .em-btnStorage:hover, .em-btnSystem:hover, {
+  background-color: #16a085;
+}
+
+.em-system, .em-network, .em-screen, .em-ram, .em-storage, .em-save-btn {
+  display: none;
+}
+
+$clouds: #ecf0f1;
+$turquoise: #1abc9c;
+$greensea: #16a085;
+$night: #34495e;
+$midnight: #2c3e50;
