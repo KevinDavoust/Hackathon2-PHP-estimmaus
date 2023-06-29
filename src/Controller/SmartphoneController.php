@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Brand;
 use App\Entity\Smartphone;
+use App\Form\BrandPictureType;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
 use App\Form\SmartphoneType;
@@ -33,16 +34,24 @@ class SmartphoneController extends AbstractController
         $formBrandEstimate = $this->createForm(BrandType::class);
         $formBrandEstimate->handleRequest($request);
 
+        /*$formBrandPictureEstimate = $this->createForm(BrandPictureType::class);
+        $formBrandPictureEstimate->handleRequest($request);*/
+
         if ($formBrandEstimate->isSubmitted() && $formBrandEstimate->isValid()) {
             $brandName = $formBrandEstimate->getData()->getName();
+            //$brandName = $formBrandEstimate->get('name')->getData()->getName();
 
             $sessionEstimateService->addToEstimateSession('brandEstimate', 'brand', 'name', $brandName, $request);
-
+            /*dd($formBrandEstimate);*/
             return $this->redirectToRoute(
                 'app_smartphone_model',
                 [],
                 Response::HTTP_SEE_OTHER);
         }
+
+        /*if ($formBrandPictureEstimate->isSubmitted()) {
+            $brandName = $formBrandPictureEstimate->getData()->getName();
+        }*/
 
         $brands = $brandService->getBrands();
 
