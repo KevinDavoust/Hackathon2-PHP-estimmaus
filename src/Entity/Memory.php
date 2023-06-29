@@ -18,11 +18,11 @@ class Memory
     #[ORM\Column(nullable: true)]
     private ?int $size = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $indice = null;
-
     #[ORM\OneToMany(mappedBy: 'memory', targetEntity: Smartphone::class)]
     private Collection $smartphones;
+
+    #[ORM\OneToOne(targetEntity: self::class, cascade: ['persist', 'remove'])]
+    private ?self $indicator = null;
 
     public function __construct()
     {
@@ -42,18 +42,6 @@ class Memory
     public function setSize(?int $size): static
     {
         $this->size = $size;
-
-        return $this;
-    }
-
-    public function getIndice(): ?int
-    {
-        return $this->indice;
-    }
-
-    public function setIndice(?int $indice): static
-    {
-        $this->indice = $indice;
 
         return $this;
     }
@@ -92,5 +80,17 @@ class Memory
     {
         // TODO: Implement __toString() method.
         return $this->getSize();
+    }
+
+    public function getIndicator(): ?self
+    {
+        return $this->indicator;
+    }
+
+    public function setIndicator(?self $indicator): static
+    {
+        $this->indicator = $indicator;
+
+        return $this;
     }
 }

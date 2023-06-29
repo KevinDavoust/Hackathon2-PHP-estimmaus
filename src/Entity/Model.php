@@ -22,9 +22,6 @@ class Model
     private ?Brand $brand = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $indice = null;
-
-    #[ORM\Column(nullable: true)]
     private ?int $year = null;
 
     #[ORM\OneToMany(mappedBy: 'model', targetEntity: Smartphone::class)]
@@ -32,6 +29,9 @@ class Model
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picturePath = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Indicator $indicator = null;
 
     public function __construct()
     {
@@ -63,18 +63,6 @@ class Model
     public function setBrand(?Brand $brand): static
     {
         $this->brand = $brand;
-
-        return $this;
-    }
-
-    public function getIndice(): ?int
-    {
-        return $this->indice;
-    }
-
-    public function setIndice(?int $indice): static
-    {
-        $this->indice = $indice;
 
         return $this;
     }
@@ -135,6 +123,18 @@ class Model
     public function setPicturePath(?string $picturePath): static
     {
         $this->picturePath = $picturePath;
+
+        return $this;
+    }
+
+    public function getIndicator(): ?Indicator
+    {
+        return $this->indicator;
+    }
+
+    public function setIndicator(?Indicator $indicator): static
+    {
+        $this->indicator = $indicator;
 
         return $this;
     }
