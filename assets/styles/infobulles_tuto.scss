@@ -1,20 +1,38 @@
 .shepherd-button {
-  width: 144px;
-  height: 40px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 140px;
+  height: 36px;
+  background: $light-blue;
+  color: white;
   font-size: 14px;
-  line-height: 22px;
-  color: #FFFFFFFF;
-  background: #05380AFF;
-  opacity: 1;
+  border-radius: 38px;
+  box-shadow: $box-shadow;
   border: none;
-  border-radius: 20px;
 }
 
 .shepherd-button:hover {
-    color: #FFFFFFFF;
-    background: #032807FF;
+  background: $dark-blue;
+}
+
+.shepherd-footer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.shepherd-text {
+  padding: 2em;
+  font-size: 1.2em;
+}
+
+.shepherd-header {
+  padding: 0 0.5em 0 0;
+  background-color: #FCD85A !important;
+}
+
+.shepherd-header h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.shepherd-enabled {
+
 }
