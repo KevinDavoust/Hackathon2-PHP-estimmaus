@@ -154,7 +154,6 @@ class AppFixtures extends Fixture
         foreach ($sizes as $key => $size) {
             $storage = new Storage();
             $storage->setSize($size);
-            // $storage->setIndice($key + 1);
 
             $manager->persist($storage);
             $storages[] = $storage;
@@ -167,7 +166,6 @@ class AppFixtures extends Fixture
         foreach ($sizes as $key => $size) {
             $memory = new Memory;
             $memory->setSize($size);
-            // $memory->setIndice($key + 1);
 
             $manager->persist($memory);
             $memories[] = $memory;
