@@ -192,10 +192,10 @@ class AppFixtures extends Fixture
         }
 
         $stateTypes = [
-            "DEEE",
             "REPARABLE",
             "RECONDITIONNABLE",
-            "RECONDITIONNÉ"
+            "RECONDITIONNÉ",
+            "NEUF"
         ];
 
         $states = [];

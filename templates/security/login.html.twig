@@ -1,13 +1,42 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}Welcome!
+		{% endblock %}
+	</title>
+	<link rel="icon" type="image/jpg" href="{{ asset('../images/logoC.png') }}"/>
+	{% block stylesheets %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/>
+		{{ encore_entry_link_tags('app') }}
 
-{% block title %}Hello HomeController!{% endblock %}
+	{% endblock %}
 
-{% block body %}
+	{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		<script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Flip.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Observer.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Draggable.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/EaselPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/MotionPathPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/PixiPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/TextPlugin.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/EasePack.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/CustomEase.min.js"></script>
+		<script src="https://kit.fontawesome.com/418bab4033.js" crossorigin="anonymous"></script>
+	{% endblock %}
+</head>
+	<body>
     <div class="ec-landing-page col-6">
         <img class="ec-img-landing-page" src="{{ asset("build/images/estimmaus.png") }}" alt="estimmaus">
         <button class="ec-button-start" id="ec-button-js">Commencer</button>
     </div>
-    <div class="col-6 hidden">
+    <div class="hidden col-6">
         <form method="post" class="ec-login col-6 m-auto">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -18,36 +47,33 @@
                     You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
-            <div class="ec-form mx-auto">
-                <label class="" for="inputEmail">Email</label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="exemple@gmail.com" required autofocus>
-            </div>
-            <div class="ec-form mx-auto">
-                <label class="" for="inputPassword">Password</label>
-                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"  placeholder="Entre ton mot de passe" required>
-            </div>
+			<div class="ec-form mx-auto">
+				<label class="" for="inputEmail">Email</label>
+				<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="exemple@gmail.com" required autofocus>
+			</div>
+			<div class="ec-form m-auto">
+				<label class="" for="inputPassword">Password</label>
+				<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Entre ton mot de passe" required>
+			</div>
+			<input
+					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-            <input type="hidden" name="_csrf_token"
-                   value="{{ csrf_token('authenticate') }}"
-            >
-
-            {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
-
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
-                </label>
-            </div>
-            #}
-            <div class="text-center mt-5">
-                <button class="ec-button" type="submit">
-                    Se connecter
-                </button>
-            </div>
-        </form>
-    </div>
+			{#
+			Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+			See https://symfony.com/doc/current/security/remember_me.html
+			<div class=“checkbox mb-3”>
+				<label>
+					<input type=“checkbox” name=“_remember_me”> Remember me
+				</label>
+			</div>
+			#}
+			<div class="text-center m-auto">
+				<button class="ec-button mt-5" type="submit">
+					Se connecter
+				</button>
+			</div>
+		</form>
+	</div>
     <script>
             const button = document.getElementById('ec-button-js');
             const login = document.querySelector('.hidden');
@@ -58,9 +84,8 @@
                 gsap.to(".ec-login", { y: -400, duration: 1.2, opacity: 1});
                 login.style.overflow = "initial";
                 login.style.height = "100%";
-
-
             });
     </script>
-{% endblock %}
-
+	</head>
+	</body>
+</html>
