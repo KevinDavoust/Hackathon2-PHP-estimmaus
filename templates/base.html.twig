@@ -5,11 +5,14 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" type="image/jpg" href="{{ asset('../images/logoC.png') }}" />
         {% block stylesheets %}
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/>
             {{ encore_entry_link_tags('app') }}
+
         {% endblock %}
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Flip.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
@@ -23,16 +26,6 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/EasePack.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/CustomEase.min.js"></script>
             <script src="https://kit.fontawesome.com/418bab4033.js" crossorigin="anonymous"></script>
-
-
-            <!--
-            CustomBounce.min.js, and CustomWiggle.min.js are Club GreenSock perks which are not available on a CDN. Download them from your GreenSock account and include them locally like this:
-
-            <script src="/[YOUR_DIRECTORY]/CustomBounce.min.js"></script>
-            <script src="/[YOUR_DIRECTORY]/CustomWiggle.min.js"></script>
-
-            Sign up at https://greensock.com/club or try them for free on CodePen or CodeSandbox
-            -->
         {% endblock %}
     </head>
     <body>

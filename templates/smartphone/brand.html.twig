@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ form_start(formBrandEstimate) }}
+    {#{{ form_widget(formBrandEstimate) }}#}
+    {{ form_row(formBrandEstimate.name) }}
+    {{ form_row(formBrandEstimate.picturePath) }}
+    <input type="submit" value="valider" class="btn">
+    {#<div style="display: flex; flex-direction: column;">
+    {% for brand in brands %}
+        <input type="image" src="{{ asset('images/brands/' ~ brand.picturePath) }}" name="{{ field_name(formBrandEstimate.picturePath) }}" value="{{ brand.name }}">
+    {% endfor %}
+    </div>#}
+
+
+    {{ form_end(formBrandEstimate) }}
+    {#{% for brand in brands %}
+        {% if brand.name == formBrandEstimate.name.vars.value %}
+            {{ brand.name }}
+            {{ brand.picturePath }}
+            #}{#<img src="{{ brand.picturePath }}" alt="{{ brand.name }}">#}{#
+        {% endif %}
+    {% endfor %}#}
+
+    {#<form>
+        <div style="display: flex; flex-direction: column;">
+            {% for brand in brands %}
+                <input type="image" src="{{ asset('images/brands/' ~ brand.picturePath) }}" name="{{ field_name(formBrandEstimate.name) }}" value="{{ brand.name }}">
+                #}{#<label for="radio ~ {{ loop.index }}"><img src="{{ asset('images/brands/' ~ brand.picturePath) }}" alt="{{ brand.name }}"></label>#}{#
+            {% endfor %}
+        </div>
+        #}{#<input type="submit" value="valider2">#}{#
+    </form>#}
+
+{% endblock %}
