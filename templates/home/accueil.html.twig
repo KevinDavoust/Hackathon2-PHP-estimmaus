@@ -9,24 +9,28 @@
         <nav class="d-flex flex-column es-sidebar align-items-center">
             <img class="es-sidebar-logo mb-5 mt-4" src="{{ asset('build/images/estimmaus.png') }}" alt="logo Estimmaüs">
 
+                    <div class="es-sidebar-estimation d-flex flex-column align-items-center">
                 <i class="fa-solid fa-sack-dollar fa-3x mb-2"></i>
                 <a class="mb-5 es-sidebar-link" href="#">Faire une estimation</a>
+                    </div>
 
 
-                <i class="fa-solid fa-circle-play fa-3x mb-2"></i>
-                <a class="mb-5 es-sidebar-link" href="#">Rejouer le tutoriel</a>
 
 
+            <div class="es-sidebar-faq d-flex flex-column align-items-center">
                 <i class="fa-solid fa-circle-question fa-3x mb-2"></i>
-                <a class="mb-5 es-sidebar-link" href="#">FAQ</a>
+                <a class="mb-5 es-sidebar-link" href="#">FAQ / tutoriel</a>
+            </div>
 
-
+            <div class="es-sidebar-contact d-flex flex-column align-items-center">
                 <i class="fa-solid fa-envelope fa-3x mb-2"></i>
-                <a class="mb-5 es-sidebar-link" href="#">Contact</a>
+                <a class="es-sidebar-link es-sidebar-contact" href="#">Contact</a>
+            </div>
 
+            <div class="es-sidebar-logout d-flex flex-column align-items-center">
                 <i class="fa-solid fa-right-from-bracket fa-3x mb-2"></i>
-                <a class="mb-5 es-sidebar-link" href="#">Se déconnecter</a>
+                <a class="mb-5 es-sidebar-link " href="#">Se déconnecter</a>
+            </div>
         </nav>
     </aside>
-    <i class="fa-solid fa-circle-dollar"></i>
 {% endblock %}
