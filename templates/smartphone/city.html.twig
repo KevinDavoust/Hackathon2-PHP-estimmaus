@@ -3,19 +3,18 @@
 {% block body %}
     <div class="ec-model card mx-auto">
         <div class="col-8 m-auto">
-            <h1 class="py-5">Quelle est la marque du téléphone ?</h1>
-            {{ form_start(formBrandEstimate) }}
+            <h1 class="py-5">Dans quelle ville se situe l'agence ?</h1>
+            {{ form_start(form) }}
             <div class="">
                 {#{{ form_widget(formModelEstimate) }}#}
-                {{ form_widget(formBrandEstimate.name) }}
+                {{ form_widget(form.name) }}
             </div>
             <div class="text-center p-5">
                 <input class="ec-button" type="submit" value="Valider">
             </div>
-            {{ form_end(formBrandEstimate) }}
+            {{ form_end(form) }}
         </div>
 
-        <p class="text-center">Si la marque n'est pas présente dans la liste, merci de <a href="{{ path('app_contact') }}">contacter l'administrateur</a>.</p>
+        <p class="text-center">Si la ville n'est pas présente dans la liste, merci de <a href="{{ path('app_contact') }}">contacter l'administrateur</a>.</p>
     </div>
 {% endblock %}
-{#  #}
