@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Brand;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,10 +23,10 @@ class BrandType extends AbstractType
                 'autocomplete' => true,
                 //'options_as_html' => true,
                 'no_results_found_text' => "<span>Désolé je ne connais pas cette marque.</span>", // TODO : add link to contact form
-                /*'attr' => [
-                    'class' => 'form-control',
-                ],*/
             ])
+            /*->add('picturePath', ChoiceType::class, [
+                'choices' => $brands,
+            ])*/
         ;
     }
 
