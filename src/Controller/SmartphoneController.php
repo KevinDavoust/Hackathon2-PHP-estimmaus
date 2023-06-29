@@ -145,7 +145,7 @@ class SmartphoneController extends AbstractController
             $sessionEstimateService->addToEstimateSession('stateEstimate', 'State', 'type', $stateType, $request);
 
             return $this->redirectToRoute(
-                'app_smartphone_result',
+                'app_estimation',
                 [],
                 Response::HTTP_SEE_OTHER
             );
@@ -153,26 +153,6 @@ class SmartphoneController extends AbstractController
 
         return $this->render('smartphone/state.html.twig', [
             'formStateEstimate' => $formStateEstimate->createView(),
-        ]);
-    }
-
-    #[Route('/result', name: 'app_smartphone_result', methods: ['GET', 'POST'])]
-    public function resultEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
-    {
-        $session = $request->getSession()->get('stateEstimate');
-        var_dump($session);
-        $brand = $sessionEstimateService->getFromEstimateSession('brandEstimate', $request);
-        $model = $sessionEstimateService->getFromEstimateSession('modelEstimate', $request);
-        $state = $sessionEstimateService->getFromEstimateSession('stateEstimate', $request);
-        $memory = $sessionEstimateService->getFromEstimateSession('memoryEstimate', $request);
-        $storage = $sessionEstimateService->getFromEstimateSession('storageEstimate', $request);
-
-        return $this->render('smartphone/result.html.twig', [
-            'brand' => $brand,
-            'model' => $model,
-            'state' => $state,
-            'memory' => $memory,
-            'storage' => $storage
         ]);
     }
 
