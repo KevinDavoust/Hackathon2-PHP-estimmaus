@@ -4013,6 +4013,11 @@ statuses@2.0.1:
   resolved "https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
+stimulus-password-visibility@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/stimulus-password-visibility/-/stimulus-password-visibility-2.1.1.tgz#b366223c7650704507a38a3e5d126e8474abad3e"
+  integrity sha512-FnscC06Ux7mgfJo9s7OceOQ59yU1Tm8sWByG89hnMPcWvYSX/1yx3wFxNOgKhtxaDPdvtb+ERgmv6F9JvPJc7w==
+
 string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
