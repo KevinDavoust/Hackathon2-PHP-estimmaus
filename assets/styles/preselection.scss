@@ -12,10 +12,10 @@
   width: 30vw;
   height: 100vh;
   padding: 3%;
-  background-color: blue;
-  position: absolute;
-  right: 25%;
-  top: 20%;
+  background-color: white;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .form-check {
@@ -39,10 +39,9 @@
 .em-btnAccessories, .em-btnNetwork, .em-btnScreen, .em-btnRam, .em-btnStorage, .em-btnSystem, {
   width: 6em;
   height: 2em;
-  background-color: #1abc9c;
+  background-color: #344fa9;
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
-  --bs-btn-font-family: ;
   --bs-btn-font-size: 1rem;
   --bs-btn-font-weight: 400;
   --bs-btn-line-height: 1.5;
@@ -72,16 +71,32 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.em-btnAccessories:hover, .em-btnNetwork:hover, .em-btnScreen:hover, .em-btnRam:hover, .em-btnStorage:hover, .em-btnSystem:hover, {
+.em-btnAccessories:hover, .em-btnNetwork:hover, .em-btnScreen:hover, .em-btnRam:hover, .em-btnStorage:hover, .em-btnSystem:hover {
   background-color: #16a085;
 }
 
 .em-system, .em-network, .em-screen, .em-ram, .em-storage, .em-save-btn {
-  display: none;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-$clouds: #ecf0f1;
-$turquoise: #1abc9c;
-$greensea: #16a085;
-$night: #34495e;
-$midnight: #2c3e50;
+.em-accessories {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.em-error-selection {
+  position: absolute;
+  top: 10%;
+  right: - 50%;
+  width: 20vw;
+  height: 50vh;
+  opacity: 0;
+  background-color: #f44336;
+  color: white;
+}
