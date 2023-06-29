@@ -16,7 +16,7 @@ class RamAndStorageType extends AbstractType
             ->add('RAM' , NumberType::class, [
                 'label' => 'La RAM fait :    (en Go)'])
             ->add('storage', NumberType::class, [
-                'label' => 'La mémoire fait :    (en Go)'])
+                'label' => 'Le stockage fait :    (en Go)'])
             ->add('save', SubmitType::class, ['label' => 'Valider'])
         ;
     }
