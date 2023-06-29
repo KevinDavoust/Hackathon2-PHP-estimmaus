@@ -7,6 +7,7 @@ use App\Entity\Smartphone;
 use App\Form\BrandType;
 use App\Form\ModelEstimateType;
 use App\Form\MemoryEstimateType;
+use App\Form\StorageEstimateType;
 use App\Form\SmartphoneType;
 use App\Form\StateEstimateType;
 use App\Repository\SmartphoneRepository;
@@ -82,7 +83,7 @@ class SmartphoneController extends AbstractController
     #[Route('/memory', name: 'app_smartphone_memory', methods: ['GET', 'POST'])]
     public function memoryEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     {
-        $session = $request->getSession()->get('brandEstimate');
+        $session = $request->getSession()->get('modelEstimate');
         var_dump($session);
         $formMemoryEstimate = $this->createForm(MemoryEstimateType::class);
         $formMemoryEstimate->handleRequest($request);
@@ -93,7 +94,7 @@ class SmartphoneController extends AbstractController
             $sessionEstimateService->addToEstimateSession("memoryEstimate", "memory", "size", $memorySize, $request);
 
             return $this->redirectToRoute(
-                'app_smartphone_state',
+                'app_smartphone_storage',
                 [],
                 Response::HTTP_SEE_OTHER
             );
@@ -104,11 +105,36 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
+    #[Route('/storage', name: 'app_smartphone_storage', methods: ['GET', 'POST'])]
+    public function storageEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
+    {
+        $session = $request->getSession()->get('memoryEstimate');
+        var_dump($session);
+        $formStorageEstimate = $this->createForm(StorageEstimateType::class);
+        $formStorageEstimate->handleRequest($request);
+
+        if ($formStorageEstimate->isSubmitted() && $formStorageEstimate->isValid()) {
+            $storageSize = $formStorageEstimate->getData()->getSize();
+
+            $sessionEstimateService->addToEstimateSession("storageEstimate", "memory", "size", $storageSize, $request);
+
+            return $this->redirectToRoute(
+                'app_smartphone_state',
+                [],
+                Response::HTTP_SEE_OTHER
+            );
+        }
+
+        return $this->render('smartphone/storage.html.twig', [
+            "formStorageEstimate" => $formStorageEstimate
+        ]);
+    }
+
 
     #[Route('/state', name: 'app_smartphone_state', methods: ['GET', 'POST'])]
     public function stateEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     {
-        $session = $request->getSession()->get('memoryEstimate');
+        $session = $request->getSession()->get('storageEstimate');
         var_dump($session);
         $formStateEstimate = $this->createForm(StateEstimateType::class);
         $formStateEstimate->handleRequest($request);
@@ -138,11 +164,15 @@ class SmartphoneController extends AbstractController
         $brand = $sessionEstimateService->getFromEstimateSession('brandEstimate', $request);
         $model = $sessionEstimateService->getFromEstimateSession('modelEstimate', $request);
         $state = $sessionEstimateService->getFromEstimateSession('stateEstimate', $request);
+        $memory = $sessionEstimateService->getFromEstimateSession('memoryEstimate', $request);
+        $storage = $sessionEstimateService->getFromEstimateSession('storageEstimate', $request);
 
         return $this->render('smartphone/result.html.twig', [
             'brand' => $brand,
             'model' => $model,
             'state' => $state,
+            'memory' => $memory,
+            'storage' => $storage
         ]);
     }
 
