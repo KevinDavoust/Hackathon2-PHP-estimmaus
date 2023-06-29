@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/smartphone')]
 class SmartphoneController extends AbstractController
 {
-    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]
+/*    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]*/
     public function index(SmartphoneRepository $smartphoneRepository): Response
     {
         return $this->render('smartphone/index.html.twig', [
@@ -185,7 +185,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_smartphone_new', methods: ['GET', 'POST'])]
+/*    #[Route('/new', name: 'app_smartphone_new', methods: ['GET', 'POST'])]*/
     public function new(Request $request, SmartphoneRepository $smartphoneRepository): Response
     {
         $smartphone = new Smartphone();
@@ -204,7 +204,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_smartphone_show', methods: ['GET'])]
+/*    #[Route('/{id}', name: 'app_smartphone_show', methods: ['GET'])]*/
     public function show(Smartphone $smartphone): Response
     {
         return $this->render('smartphone/show.html.twig', [
@@ -212,7 +212,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_smartphone_edit', methods: ['GET', 'POST'])]
+/*    #[Route('/{id}/edit', name: 'app_smartphone_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, Smartphone $smartphone, SmartphoneRepository $smartphoneRepository): Response
     {
         $form = $this->createForm(SmartphoneType::class, $smartphone);
@@ -230,7 +230,7 @@ class SmartphoneController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_smartphone_delete', methods: ['POST'])]
+/*    #[Route('/{id}', name: 'app_smartphone_delete', methods: ['POST'])]*/
     public function delete(Request $request, Smartphone $smartphone, SmartphoneRepository $smartphoneRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $smartphone->getId(), $request->request->get('_token'))) {

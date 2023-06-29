@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/state')]
 class StateController extends AbstractController
 {
-    #[Route('/', name: 'app_state_index', methods: ['GET'])]
+/*    #[Route('/', name: 'app_state_index', methods: ['GET'])]*/
     public function index(StateRepository $stateRepository): Response
     {
         return $this->render('state/index.html.twig', [
@@ -21,7 +21,7 @@ class StateController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_state_new', methods: ['GET', 'POST'])]
+/*    #[Route('/new', name: 'app_state_new', methods: ['GET', 'POST'])]*/
     public function new(Request $request, StateRepository $stateRepository): Response
     {
         $state = new State();
@@ -40,7 +40,7 @@ class StateController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_state_show', methods: ['GET'])]
+/*    #[Route('/{id}', name: 'app_state_show', methods: ['GET'])]*/
     public function show(State $state): Response
     {
         return $this->render('state/show.html.twig', [
@@ -48,7 +48,7 @@ class StateController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_state_edit', methods: ['GET', 'POST'])]
+/*    #[Route('/{id}/edit', name: 'app_state_edit', methods: ['GET', 'POST'])]*/
     public function edit(Request $request, State $state, StateRepository $stateRepository): Response
     {
         $form = $this->createForm(StateType::class, $state);
@@ -66,7 +66,7 @@ class StateController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_state_delete', methods: ['POST'])]
+/*    #[Route('/{id}', name: 'app_state_delete', methods: ['POST'])]*/
     public function delete(Request $request, State $state, StateRepository $stateRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$state->getId(), $request->request->get('_token'))) {
