@@ -16,7 +16,6 @@ class EstimationController extends AbstractController
     #[Route('/estimation', name: 'app_estimation')]
     public function results(EstimationAlgoService $estimationAlgoService, Request $request, IndicatorRepository $indicatorRepository): Response
     {
-
         $estimation = $estimationAlgoService->getEstimation();
         return $this->render('estimation/result.html.twig', [
             "estimation" => $estimation
