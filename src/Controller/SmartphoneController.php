@@ -84,8 +84,6 @@ class SmartphoneController extends AbstractController
             );
         }
 
-
-
         return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
         ]);
