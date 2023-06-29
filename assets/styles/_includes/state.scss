@@ -37,7 +37,7 @@ input[type="radio"] {
   }*/
 }
 
-label {
+.ec-label-state {
   height: 100%;
   display: block;
   background: $background;
@@ -51,7 +51,7 @@ label {
   position: relative;
 }
 
-label:hover {
+.ec-label-state:hover {
   transform: scale(1.05);
   transition-timing-function: ease-in;
   transition: 0.2s;
