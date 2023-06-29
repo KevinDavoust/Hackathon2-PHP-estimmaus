@@ -193,7 +193,7 @@ class AppFixtures extends Fixture
         }
 
         $stateTypes = [
-            "REPARABLE",
+            "RÉPARABLE",
             "RECONDITIONNABLE",
             "RECONDITIONNÉ",
             "NEUF"
@@ -204,6 +204,21 @@ class AppFixtures extends Fixture
             $state = new State();
             $state->setType($stateType);
             $state->setPercentage(($key + 1) * 10);
+
+            switch ($stateType) {
+                case 'REPARABLE' :
+                    $state->setDescription("Un téléphone réparable s'allume mais présente des fissures majeures sur la coque et l'écran");
+                    break;
+                case 'RECONDITIONNABLE' :
+                    $state->setDescription("Un téléphone reconditionnable s'allume mais présente des fissures mineures sur la coque et l'écran");
+                    break;
+                case 'RECONDITIONNÉ' :
+                    $state->setDescription("Un téléphone reconditionné s'allume et présente des micro-fissures sur la coque et l'écran");
+                    break;
+                case 'NEUF' :
+                    $state->setDescription("Un téléphone neuf s'allume et ne présente aucune fissure sur la coque et l'écran");
+                    break;
+            }
 
             $manager->persist($state);
             $states[] = $state;
