@@ -16,10 +16,11 @@ class StateEstimateType extends AbstractType
             ->add('type', EntityType::class, [
                 'class' => State::class,
                 'choice_label' => 'type',
-                'label' => 'État',
+                'label' => 'Dans quel état est le smartphone ?',
                 'expanded' => true,
                 'multiple' => false,
                 'required' => true,
+                /*'attr' => ['class' => ]*/
             ])
         ;
     }
