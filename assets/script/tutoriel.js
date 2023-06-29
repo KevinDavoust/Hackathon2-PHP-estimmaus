@@ -52,7 +52,6 @@ tour.addStep({
             on: 'bottom',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 10,
         title: 'Foire aux questions',
         text: 'Cet onglet vous envoie vers les questions fréquemment posées, vous y trouverez certainement vos réponses !',
         buttons: [
@@ -78,7 +77,6 @@ tour.addStep({
             on: 'bottom',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 30,
         title: 'Contact',
         text: 'Cet onglet vous envoie vers la page pour contacter un administrateur, si vous avez des questions ou des suggestions.',
         buttons: [
@@ -104,7 +102,6 @@ tour.addStep({
             on: 'top',
         },
     canClickTarget: false,
-    modalOverlayOpeningPadding: 10,
         title: 'Se déconnecter',
         text: 'Ce bouton sert à vous déconnecter de l\'application, cliquez dessus quand vous avez fini de vous en servir.',
         buttons: [
