@@ -57,23 +57,10 @@
 				</tbody>
 			</table>
 		</div>
-
-		<div class="ec-buttons">
-			<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-					Points de vente
-				</button>
-				<ul class="dropdown-menu">
-					{% for city in cities %}
-						<li>
-							<a class="dropdown-item" href="#">{{ city.name }}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>
-
+		<div class="ec-results-bottom">
 			<a href="/saveSmartphone">
 				<button class="ec-button">Sauvegarder</button>
 			</a>
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}
