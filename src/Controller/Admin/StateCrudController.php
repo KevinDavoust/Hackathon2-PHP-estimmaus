@@ -29,6 +29,7 @@ class StateCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('type', 'Type'),
+            TextField::new('description', 'Description')->hideOnForm(),
             IntegerField::new('percentage', 'Pourcentage de réduction associé'),
         ];
     }
