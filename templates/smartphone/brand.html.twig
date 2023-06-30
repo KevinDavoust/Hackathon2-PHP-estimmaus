@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Etape 2 : marque{% endblock %}
+
 {% block body %}
     <svg class="sticker" id="stickerRAM" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
         <defs>
@@ -46,7 +48,7 @@
                 {{ form_widget(formBrandEstimate.name) }}
             </div>
             <div class="text-center p-5">
-                <input class="ec-button" type="submit" value="valider">
+                <input class="ec-button" type="submit" value="Valider">
             </div>
             {{ form_end(formBrandEstimate) }}
         </div>

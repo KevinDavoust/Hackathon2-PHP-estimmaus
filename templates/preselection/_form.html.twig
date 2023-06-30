@@ -11,28 +11,28 @@
         <div class="form-check form-switch">
         {{ form_row(form.accessories, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnAccessories">Valider</div>
+        <div class="em-btnAccessories ec-button">Valider</div>
     </div>
     <div class="col em-system">
         <div class="form-check form-switch">
         {{ form_row(form.system, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnSystem">Valider</div>
+        <div class="em-btnSystem ec-button">Valider</div>
     </div>
     <div class="col em-screen">
         <div class="form-check form-switch">
         {{ form_row(form.screen, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnScreen">Valider</div>
+        <div class="em-btnScreen ec-button">Valider</div>
     </div>
     <div class="col em-network">
         <div class="form-check form-switch">
         {{ form_row(form.network, {'attr': {'role': 'switch'}}) }}
     </div>
-        <div class="em-btnNetwork">Valider</div>
+        <div class="em-btnNetwork ec-button">Valider</div>
     </div>
     <div class="w-100 d-flex justify-content-center">
-        {{ form_row(form.save, {'attr': {'class': 'em-save'}}) }}
+        {{ form_row(form.save, {'attr': {'class': 'ec-button em-save text-dark'}}) }}
         {{ form_row(form._token) }}
     </div>
 </div>
@@ -65,7 +65,7 @@
             gsap.fromTo('.em-system', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnAccessories', {opacity: 0, duration: 2});
         } else {
-            gsap.to(error, {opacity: 1, x:-300, duration: 1});
+            gsap.to(error, {opacity: 1, x:-600, duration: 1});
         }
     });
 
@@ -76,7 +76,7 @@
             gsap.fromTo('.em-screen', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnSystem', {opacity: 0, duration: 2});
         } else {
-            gsap.to(error, {opacity: 1, x:-300, duration: 1});
+            gsap.to(error, {opacity: 1, x:-600, duration: 1});
         }
     });
 
@@ -87,7 +87,7 @@
             gsap.fromTo('.em-network', {opacity:0}, {duration: 2, opacity: 1});
             gsap.set('.em-btnScreen', {opacity: 0, duration: 2});
         } else {
-            gsap.to(error, {opacity: 1, x:-300, duration: 1});
+            gsap.to(error, {opacity: 1, x:-600, duration: 1});
         }
     });
 
@@ -99,14 +99,14 @@
             gsap.set('.em-btnNetwork', {opacity: 0, duration: 2});
             gsap.set(btnNextStep, {opacity: 1, duration: 2});
         } else {
-            gsap.to(error, {opacity: 1, x:-300, duration: 1});
+            gsap.to(error, {opacity: 1, x:-600, duration: 1});
         }
     });
 
     /////////////////// button error
 
     changeButton.addEventListener('click', () => {
-            gsap.to(error, {opacity: 0, x:300, duration: 1});
+        gsap.to(error, {opacity: 1, x:600, duration: 1});
     });
 
 </script>

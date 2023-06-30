@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Etape 4 : état{% endblock %}
+
 {% block body %}
 
     <svg class="sticker new-sticker" id="stickerRAM" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -79,7 +81,6 @@
     {#<div class="ec-radios">#}
     {{ form_start(formStateEstimate) }}
         {% for state in states %}
-
             <div class="ec-radio">
                 <input type="radio" id="radio{{loop.index }}" value="{{ state.type }}" name="{{ field_name(formStateEstimate.type) }}">
                 <label for="radio{{loop.index }}" class="ec-label-state">
