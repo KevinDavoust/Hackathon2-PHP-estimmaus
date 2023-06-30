@@ -1,0 +1,33 @@
+.sticker {
+  position: absolute;
+  top: 90%;
+  left: 30%;
+  width: 200px; /* Adjust the size as needed */
+  height: 100px;
+  transform: translate(-100px, -100px) rotate(-20deg);
+  opacity: 0;
+}
+
+#stickerRAM {
+  top: 90%;
+  left: 28%;
+  transform: translate(-100px, -100px) rotate(-20deg);
+}
+
+#stickerStock {
+  top: 80%;
+  left: 30%;
+  transform: translate(-100px, -100px) rotate(16deg);
+}
+
+#stickerBrand {
+  top: 72%;
+  left: 26%;
+  transform: translate(-100px, -100px) rotate(-12deg);
+}
+
+#stickerModel {
+  top: 65%;
+  left: 30%;
+  transform: translate(-100px, -100px) rotate(18deg);
+}

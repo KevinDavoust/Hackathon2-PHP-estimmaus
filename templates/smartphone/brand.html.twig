@@ -1,6 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <svg class="sticker" id="stickerRAM" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <defs>
+            <filter id="sticker-effect" x="-50%" y="-50%" width="200%" height="200%">
+                <feOffset in="SourceAlpha" dx="2" dy="4"/>
+                <feGaussianBlur stdDeviation="4"/>
+                <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.3"/>
+                </feComponentTransfer>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <circle cx="100" cy="100" r="90" fill="#ffab1d" filter="url(#sticker-effect)"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="48px" fill="#f5f5f5">{{ RAM }} Go</text>
+    </svg>
+
+    <svg class="sticker" id="stickerStock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <defs>
+            <filter id="sticker-effect" x="-50%" y="-50%" width="200%" height="200%">
+                <feOffset in="SourceAlpha" dx="2" dy="4"/>
+                <feGaussianBlur stdDeviation="4"/>
+                <feComponentTransfer>
+                    <feFuncA type="linear" slope="0.3"/>
+                </feComponentTransfer>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <circle cx="100" cy="100" r="90" fill="#489ED7" filter="url(#sticker-effect)"/>
+        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="48px" fill="#f5f5f5">{{ storage }} Go</text>
+    </svg>
+
     <div class="ec-model card mx-auto">
         <div class="col-8 m-auto">
             <h1 class="py-5">Quelle est la marque du téléphone ?</h1>
@@ -17,5 +53,32 @@
 
         <p class="text-center">Si la marque n'est pas présente dans la liste, merci de <a href="{{ path('app_contact') }}">contacter l'administrateur</a>.</p>
     </div>
+
+    <script>
+        const stickers = document.querySelectorAll('.sticker');
+
+        function playStickerEffects() {
+            let delay = 0;
+
+            stickers.forEach((sticker, index) => {
+                setTimeout(() => {
+                    playStickerEffect(sticker);
+                }, delay);
+
+                // Increment the delay for the next sticker
+                delay += 500; // Adjust the delay as needed
+            });
+        }
+
+        function playStickerEffect(sticker) {
+            gsap.timeline()
+                .set(sticker, { scale: 0.8, opacity: 1 })
+                .to(sticker, { scale: 1.2, duration: 0.2 })
+                .to(sticker, { scale: 1, duration: 0.2 });
+        }
+
+        window.addEventListener('load', playStickerEffects);
+
+    </script>
 {% endblock %}
 {#  #}
