@@ -208,7 +208,7 @@ class AppFixtures extends Fixture
             $state->setPercentage(($key + 1) * 10);
 
             switch ($stateType) {
-                case 'REPARABLE' :
+                case 'RÉPARABLE' :
                     $state->setDescription("Un téléphone réparable s'allume mais présente des fissures majeures sur la coque et l'écran");
                     break;
                 case 'RECONDITIONNABLE' :

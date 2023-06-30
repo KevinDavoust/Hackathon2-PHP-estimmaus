@@ -61,7 +61,7 @@ class SmartphoneController extends AbstractController
         $brands = $brandService->getBrands();
 
         $sessionEstimate = $request->getSession();
-        $ram = $sessionEstimate->get('ramEstimate');
+        $ram = $sessionEstimate->get('memoryEstimate');
         $storage = $sessionEstimate->get('storageEstimate');
 
         return $this->render('smartphone/brand.html.twig', [
@@ -93,7 +93,7 @@ class SmartphoneController extends AbstractController
         }
 
         $sessionEstimate = $request->getSession();
-        $ram = $sessionEstimate->get('ramEstimate');
+        $ram = $sessionEstimate->get('memoryEstimate');
         $storage = $sessionEstimate->get('storageEstimate');
         $brand = $sessionEstimate->get('brandEstimate');
 
@@ -199,7 +199,7 @@ class SmartphoneController extends AbstractController
         $states = $stateService->getStates();
 
         $sessionEstimate = $request->getSession();
-        $ram = $sessionEstimate->get('ramEstimate');
+        $ram = $sessionEstimate->get('memoryEstimate');
         $storage = $sessionEstimate->get('storageEstimate');
         $brand = $sessionEstimate->get('brandEstimate');
         $model = $sessionEstimate->get('modelEstimate');
