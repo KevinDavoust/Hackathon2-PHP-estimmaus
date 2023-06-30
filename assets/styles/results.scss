@@ -52,6 +52,15 @@
     justify-content: center;
 }
 
-.ec-buttons a {
-    margin: 0 0 0 2vw;
+
+.ec-results-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ec-results-bottom a {
+    width: 20vw;
+    margin-left: 13vw
 }
