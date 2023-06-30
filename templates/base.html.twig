@@ -34,6 +34,15 @@
 	</head>
 	<body class="bodyBase">
 		{% include "modules/_aside.html.twig" %}
+
+		{# {% for category, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ category }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %} #}
+
 		{% block body %}{% endblock %}
 	</body>
 </html>

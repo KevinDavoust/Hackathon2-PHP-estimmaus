@@ -49,6 +49,6 @@ class EstimationController extends AbstractController
         $smartphoneRepository->save($smartphone);
 
         $this->addFlash("success", "Sauvegardé!");
-        return $this->redirectToRoute("app_estimation");
+        return $this->redirectToRoute("app_accueil");
     }
 }
