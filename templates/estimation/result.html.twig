@@ -6,7 +6,6 @@
 
 {% block body %}
 	<div class="ec-model card mx-auto">
-
 		<div class="ec-resultsContainer">
 			<img class="ec-phoneImg" src={{ asset("build/images/iphone13pro.jpg")}} alt="Picture of iPhone 13 Pro">
 			<div>
@@ -36,7 +35,7 @@
 							Mémoire Vive
 						</th>
 						<td>
-							???
+							{{ app.session.get("memoryEstimate").getSize() }}
 						</td>
 					</tr>
 					<tr>
@@ -44,7 +43,7 @@
 							Stockage
 						</th>
 						<td>
-							???
+							{{ app.session.get("storageEstimate").getSize() }}
 						</td>
 					</tr>
 					<tr>
@@ -73,7 +72,7 @@
 				</ul>
 			</div>
 
-			<a href="">
+			<a href="/saveSmartphone">
 				<button class="ec-button">Sauvegarder</button>
 			</a>
 		</div>
