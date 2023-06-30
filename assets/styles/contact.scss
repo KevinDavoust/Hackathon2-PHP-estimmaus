@@ -3,9 +3,9 @@
      justify-content: center;
      align-items: center;
      width: 100vw;
-     border-width: 1px;
+/*     border-width: 1px;
      border-style: solid;
-     border-color: #9095A0FF;
+     border-color: #9095A0FF;*/
      border-radius: 4px;
      margin-bottom: 48px;
  }
@@ -23,6 +23,7 @@
      width: 30vw;
      height: 5vh;
      padding-left: 1vw;
+   margin-bottom: 3vh;
  }
 
  .ec-contact-form>input {
@@ -31,5 +32,9 @@
      border-radius: 4px;
      background-color: $background;
      padding: 4px;
+ }
+
+ .em-w80 {
+   width: 30%;
  }
 

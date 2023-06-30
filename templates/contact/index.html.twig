@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block body %}
-	<div class="ec-contact-form-container">
+	<div class="ec-contact-form-container d-flex flex-column">
+		<h1 class="mb-4">Contactez nous</h1>
 		{{ form_start(contactForm) }}
 		{{form_widget(contactForm)}}
-		<button class="ec-button" type="submit">Envoyer</button>
+		<div class="w-100 d-flex justify-content-center">
+		<button class="ec-button em-w80" type="submit">Envoyer</button>
+		</div>
 		{{ form_end(contactForm) }}
 	</div>
 {% endblock %}
