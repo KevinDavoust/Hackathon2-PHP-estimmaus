@@ -4,6 +4,6 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-error_404:
-    path: /error404
-    controller: App\Controller\ErrorController::showException
+# error_404:
+#     path: /error404
+#     controller: App\Controller\ErrorController::showException

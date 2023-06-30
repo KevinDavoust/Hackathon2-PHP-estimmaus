@@ -2,6 +2,8 @@
 
 namespace App\Service;
 
+use App\Entity\Memory;
+use App\Entity\Storage;
 use App\Repository\IndicatorRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -22,10 +24,18 @@ class EstimationAlgoService
     public function getEstimation(): float
     {
         $model = $this->session->get('modelEstimate');
-        $memory = $this->session->get('memoryEstimate');
-        $storage = $this->session->get('storageEstimate');
-        $state = $this->session->get('stateEstimate');
+        // $memory = $this->session->get('memoryEstimate');
+        // $storage = $this->session->get('storageEstimate');
 
+        // // DEBUG // //
+        $memory = new Memory();
+        $memory->setSize(12);
+
+        $storage = new Storage();
+        $storage->setSize(32);
+        // // DEBUG // //
+
+        $state = $this->session->get('stateEstimate');
 
         $modelIndicators = $this->indicatorRepository->findBy(["characteristic" => "model"]);
         $memoryIndicators = $this->indicatorRepository->findBy(["characteristic" => "memory"]);
