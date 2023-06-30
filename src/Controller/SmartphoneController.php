@@ -60,9 +60,15 @@ class SmartphoneController extends AbstractController
 
         $brands = $brandService->getBrands();
 
+        $sessionEstimate = $request->getSession();
+        $ram = $sessionEstimate->get('ramEstimate');
+        $storage = $sessionEstimate->get('storageEstimate');
+
         return $this->render('smartphone/brand.html.twig', [
             'formBrandEstimate' => $formBrandEstimate->createView(),
             'brands' => $brands,
+            'RAM' => $ram,
+            'storage' => $storage,
         ]);
     }
 
@@ -86,8 +92,16 @@ class SmartphoneController extends AbstractController
             );
         }
 
+        $sessionEstimate = $request->getSession();
+        $ram = $sessionEstimate->get('ramEstimate');
+        $storage = $sessionEstimate->get('storageEstimate');
+        $brand = $sessionEstimate->get('brandEstimate');
+
         return $this->render('smartphone/model.html.twig', [
             'formModelEstimate' => $formModelEstimate->createView(),
+            'RAM' => $ram,
+            'storage' => $storage,
+            'brand' => $brand,
         ]);
     }
 
@@ -184,9 +198,19 @@ class SmartphoneController extends AbstractController
 
         $states = $stateService->getStates();
 
+        $sessionEstimate = $request->getSession();
+        $ram = $sessionEstimate->get('ramEstimate');
+        $storage = $sessionEstimate->get('storageEstimate');
+        $brand = $sessionEstimate->get('brandEstimate');
+        $model = $sessionEstimate->get('modelEstimate');
+
         return $this->render('smartphone/state.html.twig', [
             'formStateEstimate' => $formStateEstimate->createView(),
             'states' => $states,
+            'RAM' => $ram,
+            'storage' => $storage,
+            'brand' => $brand,
+            'model' => $model,
         ]);
     }
 
