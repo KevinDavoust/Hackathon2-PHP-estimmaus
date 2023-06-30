@@ -31,18 +31,18 @@
 }
 
 body, .content-header, .resizer-handler-right, .content-header, .content-top  {
-  background-color: #BCD9ED;
+  background-color: #FFFFFF;
 }
 
 .content-top, th {
-  border-bottom: 3px solid #489ED7 !important;
+  border-bottom: 1px solid grey !important;
 }
 .datagrid thead th, .content-top, .datagrid td {
   box-shadow: none;
 }
 
 td {
-  border-bottom: 2px solid grey !important;
+  border-bottom: 1px solid grey !important;
   color: black;
   font-size: 1.2em;
 }
