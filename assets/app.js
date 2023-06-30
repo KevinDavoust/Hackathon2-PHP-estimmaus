@@ -19,3 +19,4 @@ $(document).ready(function() {
 });
 
 import './script/tutoriel.js';
+import './script/sticker.js';

@@ -18,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -48,6 +49,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToUrl('Retour à l\'application', 'fas fa-home', '/accueil');
+        yield MenuItem::linkToUrl('Graphiques', 'fa-solid fa-chart-simple', '/admin/charts');
         yield MenuItem::section('Panneau d\'administration', 'fas fa-tools');
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([

@@ -24,6 +24,9 @@ class State
     #[ORM\OneToMany(mappedBy: 'state', targetEntity: Smartphone::class)]
     private Collection $smartphones;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->smartphones = new ArrayCollection();
@@ -92,5 +95,17 @@ class State
     {
         // TODO: Implement __toString() method.
         return $this->getType();
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
