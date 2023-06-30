@@ -24,7 +24,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/smartphone')]
 class SmartphoneController extends AbstractController
 {
-    /*    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]*/
+    #[Route('/', name: 'app_smartphone_index', methods: ['GET'])]
     public function index(SmartphoneRepository $smartphoneRepository): Response
     {
         return $this->render('smartphone/index.html.twig', [
@@ -38,25 +38,16 @@ class SmartphoneController extends AbstractController
         $formBrandEstimate = $this->createForm(BrandType::class);
         $formBrandEstimate->handleRequest($request);
 
-        /*$formBrandPictureEstimate = $this->createForm(BrandPictureType::class);
-        $formBrandPictureEstimate->handleRequest($request);*/
-
         if ($formBrandEstimate->isSubmitted() && $formBrandEstimate->isValid()) {
             $brandName = $formBrandEstimate->getData()->getName();
-            //$brandName = $formBrandEstimate->get('name')->getData()->getName();
 
             $sessionEstimateService->addToEstimateSession('brandEstimate', 'brand', 'name', $brandName, $request);
-            /*dd($formBrandEstimate);*/
             return $this->redirectToRoute(
                 'app_smartphone_model',
                 [],
                 Response::HTTP_SEE_OTHER
             );
         }
-
-        /*if ($formBrandPictureEstimate->isSubmitted()) {
-            $brandName = $formBrandPictureEstimate->getData()->getName();
-        }*/
 
         $brands = $brandService->getBrands();
 
@@ -128,8 +119,6 @@ class SmartphoneController extends AbstractController
     // #[Route('/memory', name: 'app_smartphone_memory', methods: ['GET', 'POST'])]
     // public function memoryEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     // {
-    //     $session = $request->getSession()->get('modelEstimate');
-    //     var_dump($session);
     //     $formMemoryEstimate = $this->createForm(MemoryEstimateType::class);
     //     $formMemoryEstimate->handleRequest($request);
 
@@ -153,8 +142,6 @@ class SmartphoneController extends AbstractController
     // #[Route('/storage', name: 'app_smartphone_storage', methods: ['GET', 'POST'])]
     // public function storageEstimate(SessionEstimateService $sessionEstimateService, Request $request): Response
     // {
-    //     $session = $request->getSession()->get('memoryEstimate');
-    //     var_dump($session);
     //     $formStorageEstimate = $this->createForm(StorageEstimateType::class);
     //     $formStorageEstimate->handleRequest($request);
 

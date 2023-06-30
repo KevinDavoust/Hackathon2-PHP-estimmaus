@@ -1,0 +1,66 @@
+.ec-resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.resultsContainer>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vh 0 0 2vw;
+}
+
+.ec-phoneImg {
+    width: 20vw;
+    margin: 5vh 2vw 0 0;
+}
+
+.ec-resultsDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center 0 0 0;
+    margin: 5vh;
+    text-align: center;
+}
+
+.ec-resultsDetails h1 {
+    text-decoration: underline;
+}
+
+.ec-resultsDetails>table {
+    border-style: hidden;
+    margin: 0 6vw 0 0;
+    height: 30vh;
+}
+
+.ec-resultsDetails>table td {
+    border: 2px solid grey;
+    font-size: 1.7rem;
+}
+
+.ec-resultsDetails>table th {
+    text-align: end;
+    padding-right: 1vw;
+}
+
+.ec-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+
+.ec-results-bottom {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ec-results-bottom a {
+    width: 20vw;
+    margin-left: 13vw
+}

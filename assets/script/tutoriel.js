@@ -13,7 +13,7 @@ const tour = new Shepherd.Tour({
 tour.addStep({
     id: 'step1',
     title: 'Introduction à l\'application',
-    text: 'Bienvenue sur Estimmaüs ! Ce tutoriel va vous permettre de découvrir les fonctionnalités de l\'application.' <br>'Appuyez sur le bouton "Suivant" pour continuer.',
+    text: 'Bienvenue sur Estimmaüs ! Ce tutoriel va vous permettre de découvrir les fonctionnalités de l\'application. <br> Appuyez sur le bouton "Suivant" pour continuer.',
     buttons: [
         {
             text: 'Suivant',
@@ -194,3 +194,6 @@ function resetTour() {
     localStorage.removeItem('shepherd-tour');
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM chargé');
+});
