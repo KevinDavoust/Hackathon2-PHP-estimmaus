@@ -18,8 +18,10 @@ class ExportDataController extends AbstractController
         $smartphones = $smartphoneRepository->findAll();
 
         $csv = Writer::createFromFileObject(new \SplTempFileObject());
+//        $csv = Writer::createFromPath('admin/smartphones_exports.csv');
 
         $csv->insertOne($headers);
+        $csv->setEscape(' ');
 
         foreach ($smartphones as $smartphone) {
             $arr[] = array($smartphone);
@@ -29,8 +31,7 @@ class ExportDataController extends AbstractController
 
         $csv->output('smartphones_exports.csv');
 
-        return $this->render('export_data/index.html.twig', [
-            'controller_name' => 'ExportDataController',
-        ]);
+        return $this->render('home/faq.html.twig');
+
     }
 }
