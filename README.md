@@ -4,3 +4,5 @@ Projet vainqueur de l'évènement, réalisé en 48h dans le cadre du 2ème Hacka
 Plateforme destinée aux bénévoles de l'association afin d'estimer le prix d'un smartphone.
 
 Développé sous Symfony 6 par Aline, Jérémy, Virginie, Rémi et Kévin.
+
+Description concernant l'installation du projet prochainement
